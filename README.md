@@ -48,16 +48,6 @@ _None_
 ## Support and contact details
 _Contact me at vjde28@gmail.com_
 
-##Behavior Driven Design
-
-|Behavior | input | output|
-|---|---|---|
-|---|---|---|
-|---|---|---|
-|---|---|---|
-|---|---|---|
-|---|---|---|
-
 ## Technologies Used
 
 1. HTML
