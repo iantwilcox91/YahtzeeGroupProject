@@ -36,7 +36,7 @@ function checkYatzee(aRollArray) {
   var numbers = aRollArray[0];
   var i = 0;
   var recommendation = "";
-  //This checks that each number is the same as the first number
+  //This part checks that each number in the array is the same as the first number.  Odd way to check for a yahtzee
   aRollArray.forEach(function(aNum){
     if (numbers === aNum)  {i++;}
   })
