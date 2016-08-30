@@ -8,17 +8,17 @@ function Dice(die1,die2,die3,die4,die5){
 //Jonathan will be inserting methods for DICE here.  Please do not delete!
 
 //Will check conditions and return a "recommed" string.  JB  8.30.16
-function checkCondition (condition) {
-  var recommendation = "";
-  switch(condition) {
+function checkCondition (recommendation) {
+  var resultRecommendation = "";
+  switch(recommendation) {
     case 'yatzee':
         recommendation = "You have a Yatzee";
         break;
     }
-  return recommendation;
+  return resultRecommendation;
 }
 
-//Will turn a roll into an array of values; JB  8.30.16
+//Will turn a aRoll into an array of values; Needed for later functions. JB  8.30.16
 function turningaRolltoArray (aRoll) {
   aRollAarray = [];
   aRollAarray.push(aRoll.die1);
@@ -29,11 +29,17 @@ function turningaRolltoArray (aRoll) {
   return aRollAarray;
 }
 
-
-alert(turningaRolltoArray(aRoll));
-
-function checkYatzee(aRoll) {
-
+//Will check an array of 5 numbers (dice) for a yahtzee. JB 8.30.16
+function checkYatzee(aRollArray) {
+  var numbers = aRollArray[0];
+  var i = 0;
+  var recommendation = "";
+  //This checks that each number is the same as the first number
+  aRollArray.forEach(function(aNum){
+    if (numbers === aNum)  {i++;}
+  })
+  if (i===5) {recommendation = 'yatzee'}
+  return recommendation;
 }
 
 
