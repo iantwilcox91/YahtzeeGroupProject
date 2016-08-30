@@ -5,6 +5,42 @@ function Dice(die1,die2,die3,die4,die5){
   this.die4 = die4;
   this.die5 = die5;
 }
+//Jonathan will be inserting methods for DICE here.  Please do not delete!
+
+//Will check conditions and return a "recommed" string.  JB  8.30.16
+function checkCondition (condition) {
+  var recommendation = "";
+  switch(condition) {
+    case 'yatzee':
+        recommendation = "You have a Yatzee";
+        break;
+    }
+  return recommendation;
+}
+
+
+
+//Will check
+function aRolltoArray () {
+
+}
+
+function checkYatzee(aRoll) {
+
+
+
+}
+
+
+
+
+
+
+
+
+
+
+//
 
 var aRoll = new Dice (0,0,0,0,0);
 
