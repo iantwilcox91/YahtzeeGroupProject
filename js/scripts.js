@@ -120,7 +120,12 @@ function rollForTurn(){
 
 $(document).ready(function(){
   $("#rollButton").click(function(){
+    alert("you rolled...")
     timesRolledThisTurn = timesRolledThisTurn + 1
     rollForTurn()
+  });
+  $("#passTurn").click(function(){
+    timesRolledThisTurn = 0;
+    alert("this is when turns change")
   });
 });
