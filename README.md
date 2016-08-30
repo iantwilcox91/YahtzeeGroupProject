@@ -2,7 +2,7 @@
 
 #### Object-Oriented Javascript Independent Project: Pizza company website.
 
-_**By Ian Wilcox, Jonathan Buchner and Vichitra Pool (Note) on August 30th, 2016_
+#### By _**Ian Wilcox, Jonathan Buchner and Vichitra Pool (Note) on August 30th, 2016_
 
 ## Description
 
@@ -47,6 +47,16 @@ _None_
 ## Support and contact details
 _Contact me at vjde28@gmail.com_
 
+##Behavior Driven Design
+
+|Behavior | input | output|
+|---|---|---|
+|---|---|---|
+|---|---|---|
+|---|---|---|
+|---|---|---|
+|---|---|---|
+
 ## Technologies Used
 
 1. HTML
@@ -63,4 +73,4 @@ _Contact me at vjde28@gmail.com_
 
 _*MIT Creative Commons*_
 
-_Copyright (c) 2016 Vichitra Pool at Epicodus_
+_Copyright (c) 2016 Ian Wilcox, Jonathan Buchner and Vichitra Pool at Epicodus_
