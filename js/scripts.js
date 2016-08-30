@@ -18,16 +18,21 @@ function checkCondition (condition) {
   return recommendation;
 }
 
-
-
-//Will check
-function aRolltoArray () {
-
+//Will turn a roll into an array of values; JB  8.30.16
+function turningaRolltoArray (aRoll) {
+  aRollAarray = [];
+  aRollAarray.push(aRoll.die1);
+  aRollAarray.push(aRoll.die2);
+  aRollAarray.push(aRoll.die3);
+  aRollAarray.push(aRoll.die4);
+  aRollAarray.push(aRoll.die5);
+  return aRollAarray;
 }
 
+
+alert(turningaRolltoArray(aRoll));
+
 function checkYatzee(aRoll) {
-
-
 
 }
 
