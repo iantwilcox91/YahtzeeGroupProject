@@ -62,4 +62,13 @@ $(document).ready(function(){
   $("#rollButton").click(function(){
     rollForTurn()
   });
+
+
+  $(".scoreSheet").submit(function(event) {
+    event.preventDefault();
+    var inputOnes = $("#inputOnes input").val();
+  alert(inputOnes);
+  $("#inputOnes").empty();
+  $("#inputOnes").text(inputOnes);
+  });
 });
