@@ -1,0 +1,13 @@
+table {
+  border-collapse: collapse;
+
+}
+th {
+  width: 50%;
+}
+tbody tr:nth-child(even) {
+  background: #F5F5F5;
+}
+tr {
+  text-align: center;
+}
