@@ -18,12 +18,24 @@ function changeDicePic(rolledNum, num) {
   $(".dieimg"+num).attr("src", string);
 }
 
+var timesRolledThisTurn = 0;
+
 function rollForTurn(){
-  var die1 = $(".die1").is(":checked");
-  var die2 = $(".die2").is(":checked");
-  var die3 = $(".die3").is(":checked");
-  var die4 = $(".die4").is(":checked");
-  var die5 = $(".die5").is(":checked");
+  if (timesRolledThisTurn === 1){
+    var die1 = "true"
+    var die2 = "true"
+    var die3 = "true"
+    var die4 = "true"
+    var die5 = "true"
+  }else if (timesRolledThisTurn < 4) {
+    var die1 = $(".die1").is(":checked");
+    var die2 = $(".die2").is(":checked");
+    var die3 = $(".die3").is(":checked");
+    var die4 = $(".die4").is(":checked");
+    var die5 = $(".die5").is(":checked");
+  }else {
+    alert("you have rolled 3 times already")
+  }
   if(die1){
     var x = diceRoll();
     aRoll.die1 = x;
@@ -49,7 +61,6 @@ function rollForTurn(){
     aRoll.die5 = x;
     changeDicePic(x,5);
   }
-  console.log(aRoll);
 }
 
 
@@ -60,6 +71,7 @@ function rollForTurn(){
 
 $(document).ready(function(){
   $("#rollButton").click(function(){
+    timesRolledThisTurn = timesRolledThisTurn + 1
     rollForTurn()
   });
 });
