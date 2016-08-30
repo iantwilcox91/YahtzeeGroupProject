@@ -35,6 +35,7 @@ If large straight rolled, marking large straight and a straight point value is d
 If 2 pair and 3 of a kind is rolled (full house), recommend full house and display 25 points|When rolled|“You can mark a full house 25 point”|
 If multiple Yatzees are rolled, 100 point bonus is given|||
 Impliment joker....|||
+After submitting a roll, all dice checkboxes check| submit roll|dice boxes check|
 
 
 ## Setup/Installation Requirements
