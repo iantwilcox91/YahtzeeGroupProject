@@ -12,14 +12,14 @@ Behavior | Input | Output |
 --- | :---: | ---: | ---
 Make Specs| This page| Has specs | jb
 Make a board.|Reload page |Board appears | nv
-Make dice board. |Reload page | Dice Board Appears | iw
-Click a button and a d6 dice is rolled.| Click Roll | Num 1-6 | iw
-Click a button and 5 d6 dice are rolled.| Click Roll|  5 Nums | iw
-Score from the dice appears on page. | After Roll | Score appears |iw
-A dice can be rerolled.| Click | New Num |
-All dice can be rerolled. | Click | New Nums|
-0-5 dice can be saved.  These dice are not rerolled. | Select a dice | Dice does not reroll|
+Make dice board. |Reload page | Dice Board Appears | iw DONE
+Click a button and a d6 dice is rolled.| Click Roll | Num 1-6 | iw DONE
+Click a button and 5 d6 dice are rolled.| Click Roll|  5 Nums | iw DONE
+All dice can be rerolled. | Click | New Nums| IW DONE
+After submitting a roll, all dice checkboxes check| submit roll|dice boxes check| IW
+0-5 dice can be saved.  These dice are not rerolled. | Select a dice | Dice does not reroll| iw DONE
 Reroll of dice can happen up to two times. |Reroll again. |  Reroll disables|
+After rolling twice, click pass button to reset page.|reroll twice| can't roll again / pass button apears| 
 Rules appear on site | Page load| Rules appear|
 Amount of rerolls appear | Click reroll | “2 reroll left|
 A roll can be typed into the form.|Input 3|Input 3 submits|
@@ -33,6 +33,8 @@ If the 5 dice all have the same point value, marking yatzee and a yatzee point v
 If small straight rolled, marking small straight and a straight point value is displayed.|When rolled|“You can mark a small straight 30”|
 If large straight rolled, marking large straight and a straight point value is displayed.|When rolled|“You can mark a large straight 40”|
 If 2 pair and 3 of a kind is rolled (full house), recommend full house and display 25 points|When rolled|“You can mark a full house 25 point”|
+Possivle scores from the dice appears on page. | After Roll | Score appears |
+A dice can be rerolled.| Click | New Num |
 If multiple Yatzees are rolled, 100 point bonus is given|||
 Impliment joker....|||
 
