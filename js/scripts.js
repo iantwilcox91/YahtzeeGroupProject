@@ -15,6 +15,8 @@ function checkCondition (recommendation) {
         recommendation = "You have a Yatzee";
         break;
     }
+    default:
+    recommendation = "No recommendations...";
   return resultRecommendation;
 }
 
