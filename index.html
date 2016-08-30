@@ -12,7 +12,7 @@
   </head>
   <body>
     <div class="row">
-      <div class="col-md-6" id="diceSide">
+      <div class="col-md-4" id="diceSide">
         <br><br><br><br>
         <form>
           <input type="checkbox" name="dice" class="die1" value="1"><img class="diceImg dieimg1" src="dice/dice1.png" alt="dice1"/><br>
@@ -23,16 +23,17 @@
         </form>
         <button type="button" class="btn btn-danger btn-lg" id="rollButton" >ROLL</button>
       </div>
-      <div class="col-md-6" id="scoreSide">
+      <div class="col-md-8" id="scoreSide">
         <div class="container">
           <h2>Yahtzee ScoreBord</h2>
           <h5>Name: </h5>
-          <table class="table table-striped table-bordered">
+          <form class="scoreSheet">
+            <table class="table table-striped table-bordered">
             <thead>
               <tr>
                 <th>Section</th>
                 <th>How To Score</th>
-                <th>Game1</th>
+                <th>Game</th>
               </tr>
             </thead>
             <tbody>
@@ -44,47 +45,47 @@
               <tr>
                 <td>Aces = 1</td>
                 <td>Sum up Only Aces</td>
-                <td id="inputOnes"></td>
+                <td id="inputOnes"><input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>Twos = 2</td>
                 <td>Sum up Only Twos</td>
-                <td id="inputTwos"> </td>
+                <td id="inputTwos"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>Threes = 3</td>
                 <td>Sum up Only Threes</td>
-                <td id="inputThrees"> </td>
+                <td id="inputThrees"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>Fours = 4</td>
                 <td>Sum up Only Fours</td>
-                <td id="inputFours"> </td>
+                <td id="inputFours"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>Fives = 5</td>
                 <td>Sum up Only Fives</td>
-                <td id="inputFives"> </td>
+                <td id="inputFives"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>Sixes = 6</td>
                 <td>Sum up Only Sixes</td>
-                <td id="inputSixes"> </td>
+                <td id="inputSixes"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>TOTAL SCORE</td>
                 <td>=</td>
-                <td id="inputTotal"> </td>
+                <td id="inputTotal"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>BONUS </td>
                 <td>If total>=68 score 35</td>
-                <td id="inputBonus"> </td>
+                <td id="inputBonus"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>Upper TOTAL</td>
                 <td>=</td>
-                <td id="inputUpperTotal"> </td>
+                <td id="inputUpperTotal"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>
@@ -94,57 +95,64 @@
               <tr>
                 <td>3 of a kind</td>
                 <td>Add Total of All Dice</td>
-                <td id="inputThreeKind"> </td>
+                <td id="inputThreeKind"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>4 of a kind</td>
                 <td>Add Total of All Dice</td>
-                <td id="inputFourKind"> </td>
+                <td id="inputFourKind"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>Full House</td>
                 <td>SCORE 25</td>
-                <td id="inputFullHouse"> </td>
+                <td id="inputFullHouse"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>Small Straight</td>
                 <td>Seq of 4 =SCORE 30</td>
-                <td id="inputSmStraight"> </td>
+                <td id="inputSmStraight"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>Large Straight</td>
                 <td>Seq of 5 =SCORE 40</td>
-                <td id="inputLgStraight"> </td>
+                <td id="inputLgStraight"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>YAHTZEE</td>
                 <td>5 of a kind =SCORE 50</td>
-                <td id="inputYahtzee"> </td>
+                <td id="inputYahtzee"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>Chance</td>
                 <td>Sum of all 5 Dice</td>
-                <td id="inputChance"> </td>
+                <td id="inputChance"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>YAHTZEE BONUS</td>
                 <td>SCORE 100</td>
-                <td id="inputYahtzeeB"> </td>
+                <td id="inputYahtzeeB"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>Lower TOTAL</td>
                 <td>SCORE 50</td>
-                <td id="inputLowerTotal"> </td>
+                <td id="inputLowerTotal"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>GRAND TOTAL </td>
                 <td>Sum both upper and lower</td>
-                <td id="inputGrandTotal"> </td>
+                <td id="inputGrandTotal"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
             </tbody>
           </table>
+          <button type="submit" class="btn btn-warning btn-lg"  name="button">Enter!</button>
+          </form>
         </div>
       </div>
+    </div>
+    <div class="rules">
+      <h3>Rules</h3>
+
+
     </div>
   </body>
 </html>
