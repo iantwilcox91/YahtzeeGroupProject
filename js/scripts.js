@@ -90,15 +90,19 @@ function checkYatzee(aRollArray) {
   aRollArray.forEach(function(aNum){
     if (numbers === aNum)  {i++;}
   })
-  if (i===5) {recommendation = 'yatzee'}
+  if (i===5) {recommendation = 'yahtzee'}
   return recommendation;
+}
+
+function checkFourKind (aRollArray) {
+
 }
 
 //This function runs all other number checking functions,  JB 8.31.16
 //Right now the order of the functions in this array recommends the best move.
 Dice.prototype.makeARecommendation = function() {
   var recommendation = "Good Luck!";
-  $aRollArray = turningaRolltoArray(this);
+  aRollArray = turningaRolltoArray(this);
   recommendation = checkYatzee(aRollArray);
   checkCondition (recommendation);
 }
@@ -108,11 +112,11 @@ Dice.prototype.makeARecommendation = function() {
 function checkCondition (recommendation) {
   var resultRecommendation = "";
   switch(recommendation) {
-    case 'yatzee':
-        recommendation = "You have a Yatzee";
+    case 'yahtzee':
+        resultRecommendation = "You have a Yatzee!!!";
         break;
     default:
-    recommendation = "No recommendations...";
+      resultRecommendation = "No recommendations...";
   }
   $(".bg-primary").append(resultRecommendation);
 }
@@ -184,7 +188,8 @@ $(document).ready(function(){
   $("#rollButton").click(function(){
     timesRolledThisTurn = timesRolledThisTurn + 1
     $(".notesForTurn").text("you have clicked roll "+timesRolledThisTurn+" time(s).");
-    rollForTurn()
+    rollForTurn();
+    aRoll.makeARecommendation();
   });
 
   //This submits the scoresheet updates board object then inserts all properties other than -1 into the board.  Jb & Note 8/31/16
