@@ -50,7 +50,6 @@ Board.prototype.boardInputToObject = function () {
       if (id==="fours"){aBoard.fours = val;}
       if (id==="fives"){aBoard.fives = val;}
       if (id==="sixes"){aBoard.sixes = val;}
-      if (id==="bonus"){aBoard.bonus = val;}
       if (id==="threeKind"){aBoard.threeKind = val;}
       if (id==="fourKind"){aBoard.fourKind = val;}
       if (id==="fullHouse"){aBoard.fullHouse = val;}
@@ -230,6 +229,9 @@ $(document).ready(function(){
     event.preventDefault();
     aBoard.boardInputToObject();  //This function finds changed inputs and sticcks in the object
     aBoard.insertScore();  //This goes through aBoard and puts all values in the page and removes the input
+  });
+
+  $("#TotalsButton").click(function(){
     aGrandTotalScore.endGameTotals(); //==============================================================================================================================================================================================================================================================
   });
 
