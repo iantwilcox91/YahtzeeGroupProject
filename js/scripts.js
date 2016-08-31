@@ -24,23 +24,7 @@ function Board () {
   this.yahtzeeBonus = -1;
 }
 
-
-
-
 //Jonathan will be inserting methods for DICE here.  Please do not delete!
-
-//Will check conditions and return a "recommed" string.  JB  8.30.16
-function checkCondition (recommendation) {
-  var resultRecommendation = "";
-  switch(recommendation) {
-    case 'yatzee':
-        recommendation = "You have a Yatzee";
-        break;
-    default:
-    recommendation = "No recommendations...";
-  }
-  return resultRecommendation;
-}
 
 //Will turn a aRoll into an array of values; Needed for later functions. JB  8.30.16
 function turningaRolltoArray (aRoll) {
@@ -64,6 +48,19 @@ function checkYatzee(aRollArray) {
   })
   if (i===5) {recommendation = 'yatzee'}
   return recommendation;
+}
+
+//Will check conditions and return a "recommed" string.  JB  8.30.16
+function checkCondition (recommendation) {
+  var resultRecommendation = "";
+  switch(recommendation) {
+    case 'yatzee':
+        recommendation = "You have a Yatzee";
+        break;
+    default:
+    recommendation = "No recommendations...";
+  }
+  return resultRecommendation;
 }
 
 //
@@ -143,7 +140,6 @@ $(document).ready(function(){
     if (value !== -1) {
       $("#"+key).empty();
       $("#"+key).append(value);
-
     }
   });
 
@@ -172,10 +168,10 @@ $(document).ready(function(){
       if (value !== -1) {
         $("#"+key).empty();
         $("#"+key).append(value);
-
       }
     console.log(aBoard);
     });
+  });
 
   $("#passTurn").click(function(){
     timesRolledThisTurn = 0;
