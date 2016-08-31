@@ -156,7 +156,7 @@ function checkCondition (recommendation) {
     default:
       resultRecommendation = "No recommendations...";
   }
-  $(".bg-primary").append(resultRecommendation);
+  $(".bg-primary").text(resultRecommendation);
 }
 
 // -- End of jonathan edits section
@@ -244,6 +244,7 @@ $(document).ready(function(){
   $("#passTurn").click(function(){
     timesRolledThisTurn = 0;
     $(".notesForTurn").text("It is now the next turn");
+    $(".bg-primary").text("Good Luck!")
   });
 
   $("#rulesButton").click(function(){
