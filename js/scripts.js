@@ -34,8 +34,10 @@ function GrandTotalScore () {
 //Board methods
 
 //needed function boardInputToObject.  It is all the form ids.  JB and Note 8/31/16
-allFormIds = ["ones", "twoes", "threes", "fours", "fives", "sixes", "bonus", "threeKind", "fourKind", "fullHouse", "smStraight", "lgStraight", "yahtzee", "chance", "yahtzeeBonus"];
-allCalculatedIds = ["total", "bonus", "upperTotal", "lowerTotal", "grandTotal"]
+var allFormIds = ["ones", "twoes", "threes", "fours", "fives", "sixes", "bonus", "threeKind", "fourKind", "fullHouse", "smStraight", "lgStraight", "yahtzee", "chance", "yahtzeeBonus"];
+var allCalculatedIds = ["total", "bonus", "upperTotal", "lowerTotal", "grandTotal"];
+var numbersOneThroughSix = [1,2,3,4,5,6]; //This is needed for several recommendation functions
+var jbAKind //this makes it easy to put a number in switch statments
 
 //Function goes throug the form and checks for updated values.  JB and Note 8/31/16
 //This function could be rewritten and shorter if all form ids had key value pairs.  This would allow for a loop of if statements.
@@ -123,17 +125,43 @@ function turningaRolltoArray (aRoll) {
 function checkYatzee(aRollArray) {
   var numbers = aRollArray[0];
   var i = 0;
-  var recommendation = "";
   //This part checks that each number in the array is the same as the first number.  Odd way to check for a yahtzee
   aRollArray.forEach(function(aNum){
     if (numbers === aNum)  {i++;}
   })
-  if (i===5) {recommendation = 'yahtzee'}
-  return recommendation;
+  if (i===5) {recommendation = 'yahtzee'; return recommendation;}
 }
 
+//Tests for four of a kind
 function checkFourKind (aRollArray) {
+  var recommendation ="";
+  numbersOneThroughSix.forEach(function(num){
+    var amount = 0;
+    aRollArray.forEach(function(roll) {
+      if (num === roll) {amount++; }
+    });
+    if (amount === 4) {
+      jbAKind = num;
+      recommendation = 'fourKind';
+    }
+  });
+  return (recommendation);
+}
 
+//Tests for three of a kind
+function checkThreeKind (aRollArray) {
+  var recommendation ="";
+  numbersOneThroughSix.forEach(function(num){
+    var amount = 0;
+    aRollArray.forEach(function(roll) {
+      if (num === roll) {amount++; }
+    });
+    if (amount === 3) {
+      jbAKind = num;
+      recommendation = 'threeKind';
+    }
+  });
+  return (recommendation);
 }
 
 //This function runs all other number checking functions,  JB 8.31.16
@@ -141,7 +169,9 @@ function checkFourKind (aRollArray) {
 Dice.prototype.makeARecommendation = function() {
   var recommendation = "Good Luck!";
   aRollArray = turningaRolltoArray(this);
-  recommendation = checkYatzee(aRollArray);
+  var check2 = checkThreeKind (aRollArray); if (check2) {recommendation = checkThreeKind (aRollArray); }
+  var check1 = checkFourKind(aRollArray); if (check1) {recommendation = checkFourKind(aRollArray);}
+  var check0 = checkYatzee(aRollArray); if (check0) {recommendation = checkYatzee(aRollArray);}
   checkCondition (recommendation);
 }
 
@@ -152,6 +182,12 @@ function checkCondition (recommendation) {
   switch(recommendation) {
     case 'yahtzee':
         resultRecommendation = "You have a Yatzee!!!";
+        break;
+    case 'fourKind':
+        resultRecommendation = "You have four "+jbAKind+"s!";
+        break;
+    case 'threeKind':
+        resultRecommendation = "You have three "+jbAKind+"s!";
         break;
     default:
       resultRecommendation = "No recommendations...";
@@ -237,6 +273,7 @@ $(document).ready(function(){
     aBoard.insertScore();  //This goes through aBoard and puts all values in the page and removes the input
     timesRolledThisTurn = 0;
     $(".notesForTurn").text("It is now the next turn");
+    $(".bg-primary").text("Good Luck!");
   });
 
   $("#TotalsButton").click(function(){
