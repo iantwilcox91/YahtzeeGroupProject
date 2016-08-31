@@ -66,15 +66,6 @@ function checkYatzee(aRollArray) {
   return recommendation;
 }
 
-
-
-
-
-
-
-
-
-
 //
 var aBoard = new Board();
 aBoard.ones = 3;
