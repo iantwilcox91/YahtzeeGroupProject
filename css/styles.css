@@ -6,6 +6,9 @@
 .table {
   width: 40%;
 }
+.listOfRules{
+  display: none;
+}
 td input {
   width: 65%;
 }

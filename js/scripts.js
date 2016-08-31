@@ -143,7 +143,6 @@ $(document).ready(function(){
     if (value !== -1) {
       $("#"+key).empty();
       $("#"+key).append(value);
-
     }
   });
 
@@ -176,9 +175,14 @@ $(document).ready(function(){
       }
     console.log(aBoard);
     });
+  });
 
   $("#passTurn").click(function(){
     timesRolledThisTurn = 0;
     $(".notesForTurn").text("It is now the next turn");
+  });
+
+  $("#rulesButton").click(function(){
+    $(".listOfRules").toggle();
   });
 });
