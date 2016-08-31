@@ -22,10 +22,10 @@ Reroll of dice can happen up to two times. |Reroll again. |  Reroll disables| iw
 After rolling twice, click pass button to reset page.|reroll twice| can't roll again / pass button apears| iw done
 Rules appear on site | Page load| Rules appear| iw done
 Amount of rerolls appear | Click roll |you have clicked roll 2 time(s).|iw
-A roll can be typed into the form.|Input 3|Input 3 submits|
-A rolled is saved into the board object.|board.ones:-1|board.ones:3|
-The board object populates the board.|Click select|Board reloades|
-Once board populates, turn is distinguished.| Select|Says next turn|
+A roll can be typed into the form.|Input 3|Input 3 submits| done vp iw
+A rolled is saved into the board object.|board.ones:-1|board.ones:3| done vp iw
+The board object populates the board.|Click select|Board reloades| done vp iw
+Once board populates, turn is distinguished.| Select|Says next turn| 
 Values cannot be entered into pre populated cells.|Board.ones : 2|“Fill an unfilled spot”|
 Total score is displayed|Board Reloads|“Your score is 35”|
 Directions: After first roll, it tells you how many rolls are left|Roll dice|“You can roll one more time”|

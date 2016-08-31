@@ -43,7 +43,7 @@ Board.prototype.boardInputToObject = function () {
   allFormIds.forEach(function(id){
     var val = $("#"+id+" input").val();
     val = parseInt(val);
-    if (val) {
+    if (val > -1) {
       if (id==="ones"){aBoard.ones = val;}
       if (id==="twoes"){aBoard.twoes = val;}
       if (id==="threes"){aBoard.threes = val;}
@@ -65,11 +65,11 @@ Board.prototype.boardInputToObject = function () {
 //Append all values of 0 and greater in aBoard to form
 Board.prototype.insertScore = function() {
   $.each(this, function(key, value) {
-    if (value !== -1) {
-      $("#"+key).empty();
-      $("#"+key).append(value);
-    }
-  });
+    if (parseInt(value) > -1) {
+        $("#"+key).empty();
+        $("#"+key).append(parseInt(value));
+      }
+    });
 }
 GrandTotalScore.prototype.endGameTotals = function(){
   allCalculatedIds.forEach(function(id){
@@ -88,9 +88,9 @@ GrandTotalScore.prototype.endGameTotals = function(){
   if (id==="grandTotal"){aGrandTotalScore.grandTotal = aGrandTotalScore.upperTotal + aGrandTotalScore.lowerTotal;}
   });
   $.each(this, function(key, value) {
-    if (value !== -1) {
+    if (parseInt(value) > -1) {
       $("#"+key).empty();
-      $("#"+key).append(value);
+      $("#"+key).append(parseInt(value));
     }
   });
 }
@@ -156,7 +156,7 @@ function checkCondition (recommendation) {
     default:
       resultRecommendation = "No recommendations...";
   }
-  $(".bg-primary").append(resultRecommendation);
+  $(".bg-primary").text(resultRecommendation);
 }
 
 // -- End of jonathan edits section
@@ -235,15 +235,12 @@ $(document).ready(function(){
     event.preventDefault();
     aBoard.boardInputToObject();  //This function finds changed inputs and sticcks in the object
     aBoard.insertScore();  //This goes through aBoard and puts all values in the page and removes the input
+    timesRolledThisTurn = 0;
+    $(".notesForTurn").text("It is now the next turn");
   });
 
   $("#TotalsButton").click(function(){
     aGrandTotalScore.endGameTotals();
-  });
-
-  $("#passTurn").click(function(){
-    timesRolledThisTurn = 0;
-    $(".notesForTurn").text("It is now the next turn");
   });
 
   $("#rulesButton").click(function(){
