@@ -29,7 +29,7 @@ function Board () {
 allFormIds = ["ones", "twoes", "threes", "fours", "fives", "sixes", "bonus", "threeKind", "fourKind", "fullHouse", "smStraight", "lgStraight", "yahtzee", "chance", "yahtzeeBonus"];
 
 //Function goes throug the form and checks for updated values.  JB and Note 8/31/16
-//This function could be rewritten and shoert if all form ids had key value pairs.
+//This function could be rewritten and shorter if all form ids had key value pairs.  This would allow for a loop of if statements.
 Board.prototype.boardInputToObject = function () {
   allFormIds.forEach(function(id){
     var val = $("#"+id+" input").val();
@@ -64,7 +64,9 @@ Board.prototype.insertScore = function() {
   });
 }
 
-
+//Object Instances for new page load
+var aBoard = new Board();
+var aRoll = new Dice (0,0,0,0,0);
 
 //Jonathan will be inserting methods for DICE here.  Please do not delete!
 
@@ -111,12 +113,6 @@ function checkCondition (recommendation) {
 
 
 
-var aBoard = new Board();
-aBoard.ones = 3;
-aBoard.twoes = 6;
-aBoard.threeKind = 30;
-
-var aRoll = new Dice (0,0,0,0,0);
 
 function diceRoll(){
   var rollResult = Math.floor((Math.random() * 6) + 1);
@@ -188,7 +184,7 @@ $(document).ready(function(){
     rollForTurn()
   });
 
-  //This submits the scoresheet updates board object then inserts all properties other than -1 into the board.
+  //This submits the scoresheet updates board object then inserts all properties other than -1 into the board.  Jb & Note 8/31/16 
   $(".scoreSheet").submit(function(event) {
     event.preventDefault();
     aBoard.boardInputToObject();  //This function finds changed inputs and sticcks in the object
