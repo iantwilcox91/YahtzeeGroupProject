@@ -184,7 +184,7 @@ $(document).ready(function(){
     rollForTurn()
   });
 
-  //This submits the scoresheet updates board object then inserts all properties other than -1 into the board.  Jb & Note 8/31/16 
+  //This submits the scoresheet updates board object then inserts all properties other than -1 into the board.  Jb & Note 8/31/16
   $(".scoreSheet").submit(function(event) {
     event.preventDefault();
     aBoard.boardInputToObject();  //This function finds changed inputs and sticcks in the object
@@ -194,5 +194,9 @@ $(document).ready(function(){
   $("#passTurn").click(function(){
     timesRolledThisTurn = 0;
     $(".notesForTurn").text("It is now the next turn");
+  });
+
+  $("#rulesButton").click(function(){
+    $(".listOfRules").toggle();
   });
 });
