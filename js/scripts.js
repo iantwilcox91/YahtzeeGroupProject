@@ -23,6 +23,48 @@ function Board () {
   this.chance = -1;
   this.yahtzeeBonus = -1;
 }
+//Board methods
+
+//needed function boardInputToObject.  It is all the form ids.  JB and Note 8/31/16
+allFormIds = ["ones", "twoes", "threes", "fours", "fives", "sixes", "bonus", "threeKind", "fourKind", "fullHouse", "smStraight", "lgStraight", "yahtzee", "chance", "yahtzeeBonus"];
+
+//Function goes throug the form and checks for updated values.  JB and Note 8/31/16
+//This function could be rewritten and shoert if all form ids had key value pairs.
+Board.prototype.boardInputToObject = function () {
+  allFormIds.forEach(function(id){
+    var val = $("#"+id+" input").val();
+    val = parseInt(val);
+    if (val) {
+      if (id==="ones"){aBoard.ones = val;}
+      if (id==="twoes"){aBoard.twoes = val;}
+      if (id==="threes"){aBoard.threes = val;}
+      if (id==="fours"){aBoard.fours = val;}
+      if (id==="fives"){aBoard.fives = val;}
+      if (id==="sixes"){aBoard.sixes = val;}
+      if (id==="bonus"){aBoard.bonus = val;}
+      if (id==="threeKind"){aBoard.threeKind = val;}
+      if (id==="fourKind"){aBoard.fourKind = val;}
+      if (id==="fullHouse"){aBoard.fullHouse = val;}
+      if (id==="smStraight"){aBoard.smStraight = val;}
+      if (id==="lgStraight"){aBoard.lgStraight = val;}
+      if (id==="yahtzee"){aBoard.yahtzee = val;}
+      if (id==="chance"){aBoard.chance = val;}
+      if (id==="yahtzeeBonus"){aBoard.yahtzeeBonus = val;}
+    }
+  });
+}
+
+//Append all values of 0 and greater in aBoard to form
+Board.prototype.insertScore = function() {
+  $.each(this, function(key, value) {
+    if (value !== -1) {
+      $("#"+key).empty();
+      $("#"+key).append(value);
+    }
+  });
+}
+
+
 
 //Jonathan will be inserting methods for DICE here.  Please do not delete!
 
@@ -63,7 +105,12 @@ function checkCondition (recommendation) {
   return resultRecommendation;
 }
 
-//
+// -- End of jonathan edits section
+
+
+
+
+
 var aBoard = new Board();
 aBoard.ones = 3;
 aBoard.twoes = 6;
@@ -126,14 +173,6 @@ function rollForTurn(){
   }
 }
 
-
-
-
-
-allFormIds = ["ones", "twoes", "threes", "fours", "fives", "sixes", "bonus", "threeKind", "fourKind", "fullHouse", "smStraight", "lgStraight", "yahtzee", "chance", "yahtzeeBonus"];
-
-
-
 $(document).ready(function(){
 
   $.each(aBoard, function(key, value) {
@@ -149,28 +188,11 @@ $(document).ready(function(){
     rollForTurn()
   });
 
-
+  //This submits the scoresheet updates board object then inserts all properties other than -1 into the board.
   $(".scoreSheet").submit(function(event) {
     event.preventDefault();
-
-    allFormIds.forEach(function(id){
-      var val = $("#"+id+" input").val();
-      val = parseInt(val);
-      if (val) {
-        if (id==="ones"){aBoard.ones = val;}
-        if (id==="twoes"){aBoard.twoes = val;}
-        if (id==="threes"){aBoard.threes = val;}
-        if (id==="fours"){aBoard.fours = val;}
-      }
-    });
-
-    $.each(aBoard, function(key, value) {
-      if (value !== -1) {
-        $("#"+key).empty();
-        $("#"+key).append(value);
-      }
-    console.log(aBoard);
-    });
+    aBoard.boardInputToObject();  //This function finds changed inputs and sticcks in the object
+    aBoard.insertScore();  //This goes through aBoard and puts all values in the page and removes the input
   });
 
   $("#passTurn").click(function(){
