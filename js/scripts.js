@@ -34,8 +34,9 @@ function GrandTotalScore () {
 //Board methods
 
 //needed function boardInputToObject.  It is all the form ids.  JB and Note 8/31/16
-allFormIds = ["ones", "twoes", "threes", "fours", "fives", "sixes", "bonus", "threeKind", "fourKind", "fullHouse", "smStraight", "lgStraight", "yahtzee", "chance", "yahtzeeBonus"];
-allCalculatedIds = ["total", "bonus", "upperTotal", "lowerTotal", "grandTotal"]
+var allFormIds = ["ones", "twoes", "threes", "fours", "fives", "sixes", "bonus", "threeKind", "fourKind", "fullHouse", "smStraight", "lgStraight", "yahtzee", "chance", "yahtzeeBonus"];
+var allCalculatedIds = ["total", "bonus", "upperTotal", "lowerTotal", "grandTotal"]
+var numbersOneThroughSix = [1,2,3,4,5,6]; //This is needed for several recommendation functions
 
 //Function goes throug the form and checks for updated values.  JB and Note 8/31/16
 //This function could be rewritten and shorter if all form ids had key value pairs.  This would allow for a loop of if statements.
@@ -134,6 +135,7 @@ function checkYatzee(aRollArray) {
 
 function checkFourKind (aRollArray) {
 
+  aRollArray
 }
 
 //This function runs all other number checking functions,  JB 8.31.16
