@@ -21,7 +21,7 @@ After submitting a roll, all dice checkboxes check| submit roll|dice boxes check
 Reroll of dice can happen up to two times. |Reroll again. |  Reroll disables| iw done
 After rolling twice, click pass button to reset page.|reroll twice| can't roll again / pass button apears| iw done
 Rules appear on site | Page load| Rules appear|
-Amount of rerolls appear | Click reroll | “2 reroll left|
+Amount of rerolls appear | Click roll |you have clicked roll 2 time(s).|iw done
 A roll can be typed into the form.|Input 3|Input 3 submits|
 A rolled is saved into the board object.|board.ones:-1|board.ones:3|
 The board object populates the board.|Click select|Board reloades|
