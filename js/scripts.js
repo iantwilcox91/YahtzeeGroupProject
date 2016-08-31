@@ -273,7 +273,7 @@ $(document).ready(function(){
     aBoard.insertScore();  //This goes through aBoard and puts all values in the page and removes the input
     timesRolledThisTurn = 0;
     $(".notesForTurn").text("It is now the next turn");
-    $(".bg-primary").text("Good Luck!")
+    $(".bg-primary").text("Good Luck!");
   });
 
   $("#TotalsButton").click(function(){
