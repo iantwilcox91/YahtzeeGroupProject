@@ -12,7 +12,9 @@
   </head>
   <body>
     <div class="row">
-      <div class="col-md-4" id="diceSide">
+      <div class="col-md-1">
+      </div>
+      <div class="col-md-3" id="diceSide">
         <br><br><br><br>
         <form>
           <input type="checkbox" name="dice" class="die1" value="1"><img class="diceImg dieimg1" src="dice/dice1.png" alt="dice1"/><br>
@@ -81,17 +83,17 @@
               <tr>
                 <td>TOTAL SCORE</td>
                 <td>=</td>
-                <td id="Total"> <input type="number"min="0" class="form-group" name="points" ></td>
+                <td id="total"></td>
               </tr>
               <tr>
                 <td>BONUS </td>
                 <td>If total>=68 score 35</td>
-                <td id="Bonus"> <input type="number"min="0" class="form-group" name="points" ></td>
+                <td id="bonus"></td>
               </tr>
               <tr>
                 <td>Upper TOTAL</td>
                 <td>=</td>
-                <td id="UpperTotal"> <input type="number"min="0" class="form-group" name="points" ></td>
+                <td id="upperTotal"></td>
               </tr>
               <tr>
                 <td>
@@ -140,17 +142,18 @@
               </tr>
               <tr>
                 <td>Lower TOTAL</td>
-                <td>SCORE 50</td>
-                <td id="lowerTotal"> <input type="number"min="0" class="form-group" name="points" ></td>
+                <td> = </td>
+                <td id="lowerTotal"></td>
               </tr>
               <tr>
                 <td>GRAND TOTAL </td>
                 <td>Sum both upper and lower</td>
-                <td id="grandTotal"> <input type="number"min="0" class="form-group" name="points" ></td>
+                <td id="grandTotal"></td>
               </tr>
             </tbody>
           </table>
           <button type="submit" class="btn btn-danger btn-lg"  name="button">Enter!</button>
+          <button type="button" class="btn btn-warning btn-lg" id="TotalsButton"  name="button">find Totals!</button>
           </form>
         </div>
       </div>

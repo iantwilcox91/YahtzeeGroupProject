@@ -13,7 +13,6 @@ function Board () {
   this.fours = -1;
   this.fives = -1;
   this.sixes = -1;
-  this.bonus = -1;
   this.threeKind = -1;
   this.fourKind = -1;
   this.fullHouse = -1;
@@ -23,10 +22,20 @@ function Board () {
   this.chance = -1;
   this.yahtzeeBonus = -1;
 }
+
+function GrandTotalScore () {
+  this.total = -1;
+  this.bonus = -1;
+  this.upperTotal = -1;
+  this.lowerTotal = -1;
+  this.grandTotal = -1;
+}
+
 //Board methods
 
 //needed function boardInputToObject.  It is all the form ids.  JB and Note 8/31/16
 allFormIds = ["ones", "twoes", "threes", "fours", "fives", "sixes", "bonus", "threeKind", "fourKind", "fullHouse", "smStraight", "lgStraight", "yahtzee", "chance", "yahtzeeBonus"];
+allCalculatedIds = ["total", "bonus", "upperTotal", "lowerTotal", "grandTotal"]
 
 //Function goes throug the form and checks for updated values.  JB and Note 8/31/16
 //This function could be rewritten and shorter if all form ids had key value pairs.  This would allow for a loop of if statements.
@@ -41,7 +50,6 @@ Board.prototype.boardInputToObject = function () {
       if (id==="fours"){aBoard.fours = val;}
       if (id==="fives"){aBoard.fives = val;}
       if (id==="sixes"){aBoard.sixes = val;}
-      if (id==="bonus"){aBoard.bonus = val;}
       if (id==="threeKind"){aBoard.threeKind = val;}
       if (id==="fourKind"){aBoard.fourKind = val;}
       if (id==="fullHouse"){aBoard.fullHouse = val;}
@@ -63,9 +71,39 @@ Board.prototype.insertScore = function() {
     }
   });
 }
+GrandTotalScore.prototype.endGameTotals = function(){
+  allCalculatedIds.forEach(function(id){
+  if (id==="total"){aGrandTotalScore.total = (aBoard.ones + aBoard.twoes + aBoard.threes + aBoard.fours + aBoard.fives + aBoard.sixes);}
+  console.log("aGrandTotalScore=" + aGrandTotalScore.total);
+  if (id==="bonus"){
+    if (aGrandTotalScore.total >= 68){
+      aGrandTotalScore.bonus= 35;
+    }else{
+      aGrandTotalScore.bonus = 0;
+    }
+  }
+  if (id==="upperTotal"){aGrandTotalScore.upperTotal = (aGrandTotalScore.total + aGrandTotalScore.bonus);}
+
+  if (id==="lowerTotal"){aGrandTotalScore.lowerTotal =(aBoard.threeKind + aBoard.fourKind + aBoard.fullHouse + aBoard.smStraight + aBoard.lgStraight + aBoard.yahtzee + aBoard.chance + aBoard.yahtzeeBonus);}
+  if (id==="grandTotal"){aGrandTotalScore.grandTotal = aGrandTotalScore.upperTotal + aGrandTotalScore.lowerTotal;}
+  });
+  $.each(this, function(key, value) {
+    if (value !== -1) {
+      $("#"+key).empty();
+      $("#"+key).append(value);
+    }
+  });
+}
+
+
+
+
+
+
 
 //Object Instances for new page load
 var aBoard = new Board();
+var aGrandTotalScore = new GrandTotalScore();
 var aRoll = new Dice (0,0,0,0,0);
 
 //Jonathan will be inserting methods for DICE here.  Please do not delete!
@@ -197,6 +235,10 @@ $(document).ready(function(){
     event.preventDefault();
     aBoard.boardInputToObject();  //This function finds changed inputs and sticcks in the object
     aBoard.insertScore();  //This goes through aBoard and puts all values in the page and removes the input
+  });
+
+  $("#TotalsButton").click(function(){
+    aGrandTotalScore.endGameTotals();
   });
 
   $("#passTurn").click(function(){
