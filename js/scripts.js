@@ -133,7 +133,7 @@ function rollForTurn(){
 
 
 
-allFormIds = ["ones", "twoes", "threes", "fours"];
+allFormIds = ["ones", "twoes", "threes", "fours", "fives", "sixes", "bonus", "threeKind", "fourKind", "fullHouse", "smStraight", "lgStraight", "yahtzee", "chance", "yahtzeeBonus"];
 
 
 
@@ -176,7 +176,7 @@ $(document).ready(function(){
       }
     console.log(aBoard);
     });
-=======
+
   $("#passTurn").click(function(){
     timesRolledThisTurn = 0;
     $(".notesForTurn").text("It is now the next turn");
