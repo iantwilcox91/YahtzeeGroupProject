@@ -83,7 +83,7 @@ function rollForTurn(){
     var die4 = $(".die4").is(":checked");
     var die5 = $(".die5").is(":checked");
   }else {
-    alert("you have rolled 3 times already")
+    $(".notesForTurn").append(" you can only roll 3 times.");
   }
   if(die1){
     var x = diceRoll();
@@ -120,12 +120,12 @@ function rollForTurn(){
 
 $(document).ready(function(){
   $("#rollButton").click(function(){
-    alert("you rolled...")
     timesRolledThisTurn = timesRolledThisTurn + 1
+    $(".notesForTurn").text("you have clicked roll "+timesRolledThisTurn+" time(s).");
     rollForTurn()
   });
   $("#passTurn").click(function(){
     timesRolledThisTurn = 0;
-    alert("this is when turns change")
+    $(".notesForTurn").text("It is now the next turn");
   });
 });

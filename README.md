@@ -16,10 +16,10 @@ Make dice board. |Reload page | Dice Board Appears | iw DONE
 Click a button and a d6 dice is rolled.| Click Roll | Num 1-6 | iw DONE
 Click a button and 5 d6 dice are rolled.| Click Roll|  5 Nums | iw DONE
 All dice can be rerolled. | Click | New Nums| IW DONE
-After submitting a roll, all dice checkboxes check| submit roll|dice boxes check| IW
+After submitting a roll, all dice checkboxes check| submit roll|dice boxes check| IW done
 0-5 dice can be saved.  These dice are not rerolled. | Select a dice | Dice does not reroll| iw DONE
-Reroll of dice can happen up to two times. |Reroll again. |  Reroll disables|
-After rolling twice, click pass button to reset page.|reroll twice| can't roll again / pass button apears| 
+Reroll of dice can happen up to two times. |Reroll again. |  Reroll disables| iw done
+After rolling twice, click pass button to reset page.|reroll twice| can't roll again / pass button apears| iw done
 Rules appear on site | Page load| Rules appear|
 Amount of rerolls appear | Click reroll | “2 reroll left|
 A roll can be typed into the form.|Input 3|Input 3 submits|
