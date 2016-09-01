@@ -19,3 +19,7 @@ tr {
   margin-top: 60px;
   padding: 20px 25px 20px 25px;
 }
+
+.highlightId {
+  background-color: yellow;
+}

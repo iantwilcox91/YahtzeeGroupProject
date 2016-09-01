@@ -221,9 +221,15 @@ Dice.prototype.makeARecommendation = function() {
   var check1 = checkFourKind(aRollArray); if (check1) {recommendation = checkFourKind(aRollArray);}
   var check0 = checkYatzee(aRollArray); if (check0) {recommendation = checkYatzee(aRollArray);}
   checkCondition (recommendation);
+  //This will highlight boxes
+  if (check3 && aBoard.smStraight === -1) {$("#smStraight").addClass("highlightId")}
 }
 
-//This will highlight boxes
+function removeCSS() {
+   allFormIds.forEach(function(id){
+     $("#" + id).removeClass("highlightId");
+   });
+ }
 
 
 //Will check conditions and return a "recommed" string.  JB  8.30.16
@@ -286,13 +292,13 @@ function rollForTurn(){
   }
   if(die1){
     var x = diceRoll();
-    aRoll.die1 = x;
-    changeDicePic(x,1);
+    aRoll.die1 = 1;
+    changeDicePic(1,1);
   }
   if(die2){
     var x = diceRoll();
-    aRoll.die2 = x;
-    changeDicePic(x,2);
+    aRoll.die2 = 2;
+    changeDicePic(2,2);
   }
   if(die3){
     var x = diceRoll();
@@ -317,6 +323,8 @@ $(document).ready(function(){
     timesRolledThisTurn = timesRolledThisTurn + 1
     $(".notesForTurn").text("you have clicked roll "+timesRolledThisTurn+" time(s).");
     rollForTurn();
+      // this will delete highlight input boxes
+    removeCSS();
     aRoll.makeARecommendation();
   });
 
@@ -337,4 +345,5 @@ $(document).ready(function(){
   $("#rulesButton").click(function(){
     $(".listOfRules").toggle();
   });
+
 });
