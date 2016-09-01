@@ -21,6 +21,21 @@ function Board () {
   this.yahtzee = -1;
   this.chance = -1;
   this.yahtzeeBonus = -1;
+
+  this.onesP2 = -1;
+  this.twoesP2 = -1;
+  this.threesP2 = -1;
+  this.foursP2 = -1;
+  this.fivesP2 = -1;
+  this.sixesP2 = -1;
+  this.threeKindP2 = -1;
+  this.fourKindP2 = -1;
+  this.fullHouseP2 = -1;
+  this.smStraightP2 = -1;
+  this.lgStraightP2 = -1;
+  this.yahtzeeP2 = -1;
+  this.chanceP2 = -1;
+  this.yahtzeeBonusP2 = -1;
 }
 
 function GrandTotalScore () {
@@ -29,13 +44,19 @@ function GrandTotalScore () {
   this.upperTotal = -1;
   this.lowerTotal = -1;
   this.grandTotal = -1;
+
+  this.totalP2 = -1;
+  this.bonusP2 = -1;
+  this.upperTotalP2 = -1;
+  this.lowerTotalP2 = -1;
+  this.grandTotalP2 = -1;
 }
 
 //Board methods
 
 //needed function boardInputToObject.  It is all the form ids.  JB and Note 8/31/16
-var allFormIds = ["ones", "twoes", "threes", "fours", "fives", "sixes", "bonus", "threeKind", "fourKind", "fullHouse", "smStraight", "lgStraight", "yahtzee", "chance", "yahtzeeBonus"];
-var allCalculatedIds = ["total", "bonus", "upperTotal", "lowerTotal", "grandTotal"];
+var allFormIds = ["ones", "twoes", "threes", "fours", "fives", "sixes", "bonus", "threeKind", "fourKind", "fullHouse", "smStraight", "lgStraight", "yahtzee", "chance", "yahtzeeBonus", "onesP2", "twoesP2", "threesP2", "foursP2", "fivesP2", "sixesP2", "bonusP2", "threeKindP2", "fourKindP2", "fullHouseP2", "smStraightP2", "lgStraightP2", "yahtzeeP2", "chanceP2", "yahtzeeBonusP2"];
+var allCalculatedIds = ["total", "bonus", "upperTotal", "lowerTotal", "grandTotal", "totalP2", "bonusP2", "upperTotalP2", "lowerTotalP2", "grandTotalP2"];
 var numbersOneThroughSix = [1,2,3,4,5,6]; //This is needed for several recommendation functions
 var jbAKind //this makes it easy to put a number in switch statments
 
@@ -60,6 +81,23 @@ Board.prototype.boardInputToObject = function () {
       if (id==="yahtzee"){aBoard.yahtzee = val;}
       if (id==="chance"){aBoard.chance = val;}
       if (id==="yahtzeeBonus"){aBoard.yahtzeeBonus = val;}
+
+
+      if (id==="onesP2"){aBoard.onesP2 = val;}
+      if (id==="twoesP2"){aBoard.twoesP2 = val;}
+      if (id==="threesP2"){aBoard.threesP2 = val;}
+      if (id==="foursP2"){aBoard.foursP2 = val;}
+      if (id==="fivesP2"){aBoard.fivesP2 = val;}
+      if (id==="sixesP2"){aBoard.sixesP2 = val;}
+      if (id==="threeKindP2"){aBoard.threeKindP2 = val;}
+      if (id==="fourKindP2"){aBoard.fourKindP2 = val;}
+      if (id==="fullHouseP2"){aBoard.fullHouseP2 = val;}
+      if (id==="smStraightP2"){aBoard.smStraightP2 = val;}
+      if (id==="lgStraightP2"){aBoard.lgStraightP2 = val;}
+      if (id==="yahtzeeP2"){aBoard.yahtzeeP2 = val;}
+      if (id==="chanceP2"){aBoard.chanceP2 = val;}
+      if (id==="yahtzeeBonusP2"){aBoard.yahtzeeBonusP2 = val;}
+
     }
   });
 }
@@ -87,7 +125,28 @@ GrandTotalScore.prototype.endGameTotals = function(){
 
   if (id==="lowerTotal"){aGrandTotalScore.lowerTotal =(aBoard.threeKind + aBoard.fourKind + aBoard.fullHouse + aBoard.smStraight + aBoard.lgStraight + aBoard.yahtzee + aBoard.chance + aBoard.yahtzeeBonus);}
   if (id==="grandTotal"){aGrandTotalScore.grandTotal = aGrandTotalScore.upperTotal + aGrandTotalScore.lowerTotal;}
+
+
+
+
+  if (id==="totalP2"){aGrandTotalScore.totalP2 = (aBoard.onesP2 + aBoard.twoesP2 + aBoard.threesP2 + aBoard.foursP2 + aBoard.fivesP2 + aBoard.sixesP2);}
+  if (id==="bonusP2"){
+    if (aGrandTotalScore.totalP2 >= 68){
+      aGrandTotalScore.bonusP2= 35;
+    }else{
+      aGrandTotalScore.bonusP2 = 0;
+    }
+  }
+  if (id==="upperTotalP2"){aGrandTotalScore.upperTotalP2 = (aGrandTotalScore.totalP2 + aGrandTotalScore.bonusP2);}
+
+  if (id==="lowerTotalP2"){aGrandTotalScore.lowerTotalP2 =(aBoard.threeKindP2 + aBoard.fourKindP2 + aBoard.fullHouseP2 + aBoard.smStraightP2 + aBoard.lgStraightP2 + aBoard.yahtzeeP2 + aBoard.chanceP2 + aBoard.yahtzeeBonusP2);}
+  if (id==="grandTotalP2"){aGrandTotalScore.grandTotalP2 = aGrandTotalScore.upperTotalP2 + aGrandTotalScore.lowerTotalP2;}
   });
+
+
+
+
+
   $.each(this, function(key, value) {
     if (parseInt(value) > -1) {
       $("#"+key).empty();
@@ -171,31 +230,40 @@ function checkThreeKind (aRollArray) {
   return (recommendation);
 }
 
-//Tests for smass straight
+//Tests for small straight
 function checkSmallStraight (aRollArray) {
   var recommendation ="";
   var ones = 0; var twos = 0; var threes = 0; var fours = 0; var fives = 0; var sixs = 0;
-
   aRollArray.forEach(function(num){
     if (num === 1){ ones++ ;} if (num === 2){ twos++ ;} if (num === 3){ threes++ ;} if (num === 4){ fours++ ;} if (num === 5){ fives++ ;} if (num === 6){ sixs++ ;}
   });
-
-  console.log("ones= " + ones);
-  console.log("twos= " + twos);
-  console.log("threes= " + threes);
-  console.log("fours= " + fours);
-  console.log("fives= " + fives);
-  console.log("sixs= " + sixs);
-
   if ( threes>=1 && fours>=1 ){
     if( fives>=1) {
       if (twos>=1 || sixs>=1){
-      recommendation = 'straight';
+      recommendation = 'smallStraight';
       return (recommendation);}
     }else if( twos>=1){
       if (ones>=1){
-      recommendation = 'straight';
+      recommendation = 'smallStraight';
       return (recommendation);}
+    }
+  }
+}
+
+//Tests for LARGE straight
+function checkLargeStraight (aRollArray) {
+  var recommendation ="";
+  var ones = 0; var twos = 0; var threes = 0; var fours = 0; var fives = 0; var sixs = 0;
+  aRollArray.forEach(function(num){
+    if (num === 1){ ones++ ;} if (num === 2){ twos++ ;} if (num === 3){ threes++ ;} if (num === 4){ fours++ ;} if (num === 5){ fives++ ;} if (num === 6){ sixs++ ;}
+  });
+  if ( threes>=1 && fours>=1 ){
+    if( twos>=1 && fives>=1 && sixs>=1){
+      recommendation = 'largeStraight';
+      return (recommendation);
+    }else if( ones>=1 && twos>=1 && fives>=1){
+      recommendation = 'largeStraight';
+      return (recommendation);
     }
   }
 }
@@ -206,6 +274,7 @@ Dice.prototype.makeARecommendation = function() {
   var recommendation = "Good Luck!";
   aRollArray = turningaRolltoArray(this);
   var check3 = checkSmallStraight (aRollArray); if (check3) {recommendation = checkSmallStraight (aRollArray); }
+  var check5 = checkLargeStraight (aRollArray); if (check5) {recommendation = checkLargeStraight (aRollArray); }
   var check2 = checkThreeKind (aRollArray); if (check2) {recommendation = checkThreeKind (aRollArray); }
   var check4 = checkFullHouse (aRollArray); if (check4) {recommendation = checkFullHouse (aRollArray); }
   var check1 = checkFourKind(aRollArray); if (check1) {recommendation = checkFourKind(aRollArray);}
@@ -229,8 +298,11 @@ function checkCondition (recommendation) {
     case 'threeKind':
         resultRecommendation = "You have three "+jbAKind+"s!";
         break;
-    case 'straight':
-        resultRecommendation = "You have a straight!";
+    case 'smallStraight':
+        resultRecommendation = "You have a small straight!";
+        break;
+    case 'largeStraight':
+        resultRecommendation = "You have a large straight!";
         break;
     default:
       resultRecommendation = "You could chance it...";
@@ -321,4 +393,17 @@ $(document).ready(function(){
   $("#rulesButton").click(function(){
     $(".listOfRules").toggle();
   });
+
+  $("#AddPlayer").click(function() {
+  $(".p2").show();
+  $("#AddPlayer").hide();
+
+  $("#rulesModal").modal(toggle)
+    $(".modal-body").show();
+
+  $("#aboutModal").modal(toggle)
+    $(".modal-about-body").show();
+
+});
+
 });
