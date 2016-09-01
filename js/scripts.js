@@ -171,31 +171,40 @@ function checkThreeKind (aRollArray) {
   return (recommendation);
 }
 
-//Tests for smass straight
+//Tests for small straight
 function checkSmallStraight (aRollArray) {
   var recommendation ="";
   var ones = 0; var twos = 0; var threes = 0; var fours = 0; var fives = 0; var sixs = 0;
-
   aRollArray.forEach(function(num){
     if (num === 1){ ones++ ;} if (num === 2){ twos++ ;} if (num === 3){ threes++ ;} if (num === 4){ fours++ ;} if (num === 5){ fives++ ;} if (num === 6){ sixs++ ;}
   });
-
-  console.log("ones= " + ones);
-  console.log("twos= " + twos);
-  console.log("threes= " + threes);
-  console.log("fours= " + fours);
-  console.log("fives= " + fives);
-  console.log("sixs= " + sixs);
-
   if ( threes>=1 && fours>=1 ){
     if( fives>=1) {
       if (twos>=1 || sixs>=1){
-      recommendation = 'straight';
+      recommendation = 'smallStraight';
       return (recommendation);}
     }else if( twos>=1){
       if (ones>=1){
-      recommendation = 'straight';
+      recommendation = 'smallStraight';
       return (recommendation);}
+    }
+  }
+}
+
+//Tests for LARGE straight
+function checkLargeStraight (aRollArray) {
+  var recommendation ="";
+  var ones = 0; var twos = 0; var threes = 0; var fours = 0; var fives = 0; var sixs = 0;
+  aRollArray.forEach(function(num){
+    if (num === 1){ ones++ ;} if (num === 2){ twos++ ;} if (num === 3){ threes++ ;} if (num === 4){ fours++ ;} if (num === 5){ fives++ ;} if (num === 6){ sixs++ ;}
+  });
+  if ( threes>=1 && fours>=1 ){
+    if( twos>=1 && fives>=1 && sixs>=1){
+      recommendation = 'largeStraight';
+      return (recommendation);
+    }else if( ones>=1 && twos>=1 && fives>=1){
+      recommendation = 'largeStraight';
+      return (recommendation);
     }
   }
 }
@@ -206,6 +215,7 @@ Dice.prototype.makeARecommendation = function() {
   var recommendation = "Good Luck!";
   aRollArray = turningaRolltoArray(this);
   var check3 = checkSmallStraight (aRollArray); if (check3) {recommendation = checkSmallStraight (aRollArray); }
+  var check5 = checkLargeStraight (aRollArray); if (check5) {recommendation = checkLargeStraight (aRollArray); }
   var check2 = checkThreeKind (aRollArray); if (check2) {recommendation = checkThreeKind (aRollArray); }
   var check4 = checkFullHouse (aRollArray); if (check4) {recommendation = checkFullHouse (aRollArray); }
   var check1 = checkFourKind(aRollArray); if (check1) {recommendation = checkFourKind(aRollArray);}
@@ -232,8 +242,11 @@ function checkCondition (recommendation) {
     case 'threeKind':
         resultRecommendation = "You have three "+jbAKind+"s!";
         break;
-    case 'straight':
-        resultRecommendation = "You have a straight!";
+    case 'smallStraight':
+        resultRecommendation = "You have a small straight!";
+        break;
+    case 'largeStraight':
+        resultRecommendation = "You have a large straight!";
         break;
     default:
       resultRecommendation = "You could chance it...";
