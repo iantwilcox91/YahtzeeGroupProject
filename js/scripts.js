@@ -55,10 +55,11 @@ function GrandTotalScore () {
 //Board methods
 
 //needed function boardInputToObject.  It is all the form ids.  JB and Note 8/31/16
-var allFormIds = ["ones", "twoes", "threes", "fours", "fives", "sixes", "bonus", "threeKind", "fourKind", "fullHouse", "smStraight", "lgStraight", "yahtzee", "chance", "yahtzeeBonus", "onesP2", "twoesP2", "threesP2", "foursP2", "fivesP2", "sixesP2", "bonusP2", "threeKindP2", "fourKindP2", "fullHouseP2", "smStraightP2", "lgStraightP2", "yahtzeeP2", "chanceP2", "yahtzeeBonusP2"];
+var allFormIds = [ "ones", "twoes", "threes", "fours", "fives", "sixes", "bonus", "threeKind", "fourKind", "fullHouse", "smStraight", "lgStraight", "yahtzee", "chance", "yahtzeeBonus", "onesP2", "twoesP2", "threesP2", "foursP2", "fivesP2", "sixesP2", "bonusP2", "threeKindP2", "fourKindP2", "fullHouseP2", "smStraightP2", "lgStraightP2", "yahtzeeP2", "chanceP2", "yahtzeeBonusP2"];
 var allCalculatedIds = ["total", "bonus", "upperTotal", "lowerTotal", "grandTotal", "totalP2", "bonusP2", "upperTotalP2", "lowerTotalP2", "grandTotalP2"];
 var numbersOneThroughSix = [1,2,3,4,5,6]; //This is needed for several recommendation functions
-var jbAKind //this makes it easy to put a number in switch statments
+var jbAKind = 0;//this makes it easy to put a number in switch statments
+var amountOfANumber = 0;
 
 //Function goes throug the form and checks for updated values.  JB and Note 8/31/16
 //This function could be rewritten and shorter if all form ids had key value pairs.  This would allow for a loop of if statements.
@@ -223,6 +224,7 @@ function checkThreeKind (aRollArray) {
       if (num === roll) {amount++; }
     });
     if (amount >= 3) {
+      amountOfANumber = amount;
       jbAKind = num;
       recommendation = 'threeKind';
     }
@@ -281,7 +283,18 @@ Dice.prototype.makeARecommendation = function() {
   var check0 = checkYatzee(aRollArray); if (check0) {recommendation = checkYatzee(aRollArray);}
   checkCondition (recommendation);
   //This will highlight boxes
-  if (check3 && aBoard.smStraight === -1) {$("#smStraight").addClass("highlightId")}
+  if (check2 && aBoard.ones === -1 && amountOfANumber > 2 && jbAKind === 1 ) {$("#ones").closest("tr").addClass("highlightId")}
+  if (check2 && aBoard.twoes === -1 && amountOfANumber > 2 && jbAKind === 2 ) {$("#twoes").closest("tr").addClass("highlightId")}
+  if (check2 && aBoard.threes === -1 && amountOfANumber > 2 && jbAKind === 3) {$("#threes").closest("tr").addClass("highlightId")}
+  if (check2 && aBoard.fours === -1 && amountOfANumber > 2 && jbAKind === 4) {$("#fours").closest("tr").addClass("highlightId")}
+  if (check2 && aBoard.fives === -1 && amountOfANumber > 2 && jbAKind === 5) {$("#fives").closest("tr").addClass("highlightId")}
+  if (check2 && aBoard.sixes === -1 && amountOfANumber > 2 && jbAKind === 6) {$("#sixes").closest("tr").addClass("highlightId")}
+  if (check2 && aBoard.threeKind === -1) {$("#threeKind").closest("tr").addClass("highlightId")}
+  if (check1 && aBoard.fourKind === -1) {$("#fourKind").closest("tr").addClass("highlightId")}
+  if (check4 && aBoard.fullHouse === -1) {$("#fullHouse").closest("tr").addClass("highlightId")}
+  if (check3 && aBoard.smStraight === -1) {$("#smStraight").closest("tr").addClass("highlightId")}
+  if (check5 && aBoard.lgStraight === -1) {$("#lgStraight").closest("tr").addClass("highlightId")}
+  if (check0 && aBoard.yahtzee === -1) {$("#yahtzee").closest("tr").addClass("highlightId")}
 }
 
 function removeCss() {
@@ -351,13 +364,13 @@ function rollForTurn(){
   }
   if(die1){
     var x = diceRoll();
-    aRoll.die1 = 1;
-    changeDicePic(1,1);
+    aRoll.die1 = x;
+    changeDicePic(x,1);
   }
   if(die2){
     var x = diceRoll();
-    aRoll.die2 = 2;
-    changeDicePic(2,2);
+    aRoll.die2 = x;
+    changeDicePic(x,2);
   }
   if(die3){
     var x = diceRoll();
