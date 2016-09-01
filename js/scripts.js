@@ -76,7 +76,6 @@ Board.prototype.insertScore = function() {
 GrandTotalScore.prototype.endGameTotals = function(){
   allCalculatedIds.forEach(function(id){
   if (id==="total"){aGrandTotalScore.total = (aBoard.ones + aBoard.twoes + aBoard.threes + aBoard.fours + aBoard.fives + aBoard.sixes);}
-  console.log("aGrandTotalScore=" + aGrandTotalScore.total);
   if (id==="bonus"){
     if (aGrandTotalScore.total >= 68){
       aGrandTotalScore.bonus= 35;
@@ -164,11 +163,53 @@ function checkThreeKind (aRollArray) {
   return (recommendation);
 }
 
+//Tests for smass straight
+function checkSmallStraight (aRollArray) {
+  var recommendation ="";
+  var ones = 0
+  var twos = 0
+  var threes = 0
+  var fours = 0
+  var fives = 0
+  var sixs = 0
+
+  numbersOneThroughSix.forEach(function(num){
+    if (num === 1){ ones++ }
+    if (num === 2){ twos++ }
+    if (num === 3){ threes++ }
+    if (num === 4){ fours++ }
+    if (num === 5){ fives++ }
+    if (num === 6){ sixs++ }
+  });
+
+  if ( threes>1 && fours>1 ){
+    if( twos>1){
+      if (ones>1){
+      recommendation = 'straight';
+      return (recommendation);}
+    }else if( fives>1) {
+      if (twos>1 || sixs>1){
+      recommendation = 'straight';
+      return (recommendation);}
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
 //This function runs all other number checking functions,  JB 8.31.16
 //Right now the order of the functions in this array recommends the best move.
 Dice.prototype.makeARecommendation = function() {
   var recommendation = "Good Luck!";
   aRollArray = turningaRolltoArray(this);
+  var check3 = checkSmallStraight (aRollArray); if (check3) {recommendation = checkSmallStraight (aRollArray); }
   var check2 = checkThreeKind (aRollArray); if (check2) {recommendation = checkThreeKind (aRollArray); }
   var check1 = checkFourKind(aRollArray); if (check1) {recommendation = checkFourKind(aRollArray);}
   var check0 = checkYatzee(aRollArray); if (check0) {recommendation = checkYatzee(aRollArray);}
@@ -188,6 +229,9 @@ function checkCondition (recommendation) {
         break;
     case 'threeKind':
         resultRecommendation = "You have three "+jbAKind+"s!";
+        break;
+    case 'straight':
+        resultRecommendation = "You have a straight!";
         break;
     default:
       resultRecommendation = "No recommendations...";
