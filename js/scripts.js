@@ -225,7 +225,7 @@ Dice.prototype.makeARecommendation = function() {
   if (check3 && aBoard.smStraight === -1) {$("#smStraight").addClass("highlightId")}
 }
 
-function removeCSS() {
+function removeCss() {
    allFormIds.forEach(function(id){
      $("#" + id).removeClass("highlightId");
    });
@@ -324,7 +324,7 @@ $(document).ready(function(){
     $(".notesForTurn").text("you have clicked roll "+timesRolledThisTurn+" time(s).");
     rollForTurn();
       // this will delete highlight input boxes
-    removeCSS();
+    removeCss();
     aRoll.makeARecommendation();
   });
 
