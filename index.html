@@ -23,7 +23,7 @@
           <input type="checkbox" name="dice" class="die4" value="4"><img class="diceImg dieimg4" src="dice/dice4.png" alt="dice4"/><br>
           <input type="checkbox" name="dice" class="die5" value="5"><img class="diceImg dieimg5" src="dice/dice5.png" alt="dice5"/>
         </form>
-        <button type="button" class="btn btn-danger btn-lg" id="rollButton" >ROLL</button>
+        <button type="button" class="btn btn-success btn-lg" id="rollButton" >ROLL</button>
         <div class="notesForTurn"></div>
         <div class="bg-primary">Good Luck!</div>
 
@@ -33,7 +33,6 @@
       <div class="col-md-8" id="scoreSide">
         <div class="container">
           <h2>Yahtzee ScoreBord</h2>
-          <h5>Name: </h5>
           <form class="scoreSheet">
             <table class="table table-striped table-bordered">
             <thead>
@@ -41,6 +40,7 @@
                 <th>Section</th>
                 <th>How To Score</th>
                 <th>Game</th>
+                <th class="p2">Game</th>
               </tr>
             </thead>
             <tbody>
@@ -53,46 +53,55 @@
                 <td>Aces = 1</td>
                 <td>Sum up Only Aces</td>
                 <td id="ones"><input type="number"min="0" class="form-group" name="points" ></td>
+                <td id="onesP2" class="p2"><input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>Twos = 2</td>
                 <td>Sum up Only Twos</td>
                 <td id="twoes"> <input type="number"min="0" class="form-group" name="points" ></td>
+                <td id="twoesP2" class="p2"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>Threes = 3</td>
                 <td>Sum up Only Threes</td>
                 <td id="threes"> <input type="number"min="0" class="form-group" name="points" ></td>
+                <td id="threesP2" class="p2"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>Fours = 4</td>
                 <td>Sum up Only Fours</td>
                 <td id="fours"> <input type="number"min="0" class="form-group" name="points" ></td>
+                <td id="foursP2" class="p2"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>Fives = 5</td>
                 <td>Sum up Only Fives</td>
                 <td id="fives"> <input type="number"min="0" class="form-group" name="points" ></td>
+                <td id="fivesP2" class="p2"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>Sixes = 6</td>
                 <td>Sum up Only Sixes</td>
                 <td id="sixes"> <input type="number"min="0" class="form-group" name="points" ></td>
+                <td id="sixesP2" class="p2"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>TOTAL SCORE</td>
                 <td>=</td>
                 <td id="total"></td>
+                <td id="totalP2" class="p2"></td>
               </tr>
               <tr>
                 <td>BONUS </td>
                 <td>If total>=68 score 35</td>
                 <td id="bonus"></td>
+                <td id="bonusP2" class="p2"></td>
               </tr>
               <tr>
                 <td>Upper TOTAL</td>
                 <td>=</td>
                 <td id="upperTotal"></td>
+                <td id="upperTotalP2" class="p2"></td>
               </tr>
               <tr>
                 <td>
@@ -103,56 +112,67 @@
                 <td>3 of a kind</td>
                 <td>Add Total of All Dice</td>
                 <td id="threeKind"> <input type="number"min="0" class="form-group" name="points" ></td>
+                <td id="threeKindP2" class="p2"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>4 of a kind</td>
                 <td>Add Total of All Dice</td>
                 <td id="fourKind"> <input type="number"min="0" class="form-group" name="points" ></td>
+                <td id="fourKindP2" class="p2"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>Full House</td>
                 <td>SCORE 25</td>
                 <td id="fullHouse"> <input type="number"min="0" class="form-group" name="points" ></td>
+                <td id="fullHouseP2" class="p2"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>Small Straight</td>
                 <td>Seq of 4 =SCORE 30</td>
                 <td id="smStraight"> <input type="number"min="0" class="form-group" name="points" ></td>
+                <td id="smStraightP2" class="p2"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>Large Straight</td>
                 <td>Seq of 5 =SCORE 40</td>
                 <td id="lgStraight"> <input type="number"min="0" class="form-group" name="points" ></td>
+                <td id="lgStraightP2" class="p2"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>YAHTZEE</td>
                 <td>5 of a kind =SCORE 50</td>
                 <td id="yahtzee"> <input type="number"min="0" class="form-group" name="points" ></td>
+                <td id="yahtzeeP2" class="p2"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>Chance</td>
                 <td>Sum of all 5 Dice</td>
                 <td id="chance"> <input type="number"min="0" class="form-group" name="points" ></td>
+                <td id="chanceP2" class="p2"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>YAHTZEE BONUS</td>
                 <td>SCORE 100</td>
                 <td id="yahtzeeBonus"> <input type="number"min="0" class="form-group" name="points" ></td>
+                <td id="yahtzeeBonusP2" class="p2"> <input type="number"min="0" class="form-group" name="points" ></td>
               </tr>
               <tr>
                 <td>Lower TOTAL</td>
                 <td> = </td>
                 <td id="lowerTotal"></td>
+                <td id="lowerTotalP2" class="p2"></td>
               </tr>
               <tr>
                 <td>GRAND TOTAL </td>
                 <td>Sum both upper and lower</td>
                 <td id="grandTotal"></td>
+                <td id="grandTotalP2" class="p2"></td>
               </tr>
             </tbody>
           </table>
-          <button type="submit" class="btn btn-danger btn-lg"  name="button">Enter!</button>
-          <button type="button" class="btn btn-warning btn-lg" id="TotalsButton"  name="button">find Totals!</button>
+          <button type="submit" class="btn btn-danger btn-lg"  name="button">Enter Score and Pass Turn!</button>
+          <button type="button" class="btn btn-warning btn-lg" id="TotalsButton" name="button">find Totals!</button>
+          <button type="button" class="btn btn-primary btn-lg" id="AddPlayer" name="button">Add A Second Player!</button>
           </form>
         </div>
       </div>
@@ -161,12 +181,9 @@
       <button type="button" class="btn btn-info btn-lg" id="rulesButton" >Click for Rules</button>
       <p class="listOfRules">
         Yahtzee consists of a number of rounds. In each round, a player gets three rolls of the dice, although they can choose to end their turn after one or two rolls. After the first roll the player can save any dice they want and re-roll the other dice. This procedure is repeated after the second roll. The player has complete choice as to which dice to roll. They can re-roll a die for the third roll that was not rolled on the second roll. The Yahtzee scorecard contains 13 different category boxes and in each round, after the third roll, the player must choose one of these categories. The score entered in the box depends on how well the five dice match the scoring rule for the category. Details of the scoring rules for each category are given below. As an example, one of the categories is called Three-of-a-Kind. The scoring rule for this category means that a player only scores if at least three of the five dice are the same value. The game is completed after 13 rounds by each player, with each of the 13 boxes filled. The total score is calculated by summing all thirteen boxes, together with any bonuses. The Yahtzee scorecard contains 13 scoring boxes divided between two sections: the upper section and the lower section.
-
-        In the upper section there are six boxes. The score in each of these boxes is determined by adding the total number of dice matching that box. If a player scores a total of 63 or more points in these six boxes, a bonus of 35 is added to the upper section score. Although 63 points corresponds to scoring exactly three-of-a-kind for each of the six boxes, a common way to get the bonus is by scoring four-of-a-kind for some numbers so that fewer of other numbers are needed. A player can earn the bonus even if they score a "0" in an upper section box.
-
-        The lower section contains a number of poker-themed categories with specific point values. Some players count a Yahtzee as being a valid Full House. However the official rule is that a Full House is "three of one number and two of another". Small Straight and Large Straight are sometimes called by different names, either Low Straight and High Straight, Short Straight and Long Straight or Little Straight and Big Straight. If a category is chosen but the dice do not match the requirements of the category the player scores 0 in that category. Some combinations offer the player a choice as to which category to score them under; e.g., a full house could be scored in the Full House, the Three-Of-A-Kind, or the Chance categories. The Chance category is often used for a turn that will not score well in any other category.
-
-        A Yahtzee occurs when all five dice are the same. If a player throws a Yahtzee but the Yahtzee category has already been used, special rules apply. If the player throws a Yahtzee and has already filled the Yahtzee box with a score of 50, they score a Yahtzee bonus and get an extra 100 points. However, if they throw a Yahtzee and have filled the Yahtzee category with a score of 0, they do not get a Yahtzee bonus. In either case they then select a category, as usual. Scoring is the same as normal except that, if the Upper Section box corresponding to the Yahtzee has been used, the Full House, Small Straight and Large Straight categories can be used to score 25, 30 or 40 (respectively) even though the dice do not meet the normal requirement for those categories. In this case the Yahtzee is said to act as a "Joker".
+        <br><br>In the upper section there are six boxes. The score in each of these boxes is determined by adding the total number of dice matching that box. If a player scores a total of 63 or more points in these six boxes, a bonus of 35 is added to the upper section score. Although 63 points corresponds to scoring exactly three-of-a-kind for each of the six boxes, a common way to get the bonus is by scoring four-of-a-kind for some numbers so that fewer of other numbers are needed. A player can earn the bonus even if they score a "0" in an upper section box.
+        <br><br>The lower section contains a number of poker-themed categories with specific point values. Some players count a Yahtzee as being a valid Full House. However the official rule is that a Full House is "three of one number and two of another". Small Straight and Large Straight are sometimes called by different names, either Low Straight and High Straight, Short Straight and Long Straight or Little Straight and Big Straight. If a category is chosen but the dice do not match the requirements of the category the player scores 0 in that category. Some combinations offer the player a choice as to which category to score them under; e.g., a full house could be scored in the Full House, the Three-Of-A-Kind, or the Chance categories. The Chance category is often used for a turn that will not score well in any other category.
+        <br><br>A Yahtzee occurs when all five dice are the same. If a player throws a Yahtzee but the Yahtzee category has already been used, special rules apply. If the player throws a Yahtzee and has already filled the Yahtzee box with a score of 50, they score a Yahtzee bonus and get an extra 100 points. However, if they throw a Yahtzee and have filled the Yahtzee category with a score of 0, they do not get a Yahtzee bonus. In either case they then select a category, as usual. Scoring is the same as normal except that, if the Upper Section box corresponding to the Yahtzee has been used, the Full House, Small Straight and Large Straight categories can be used to score 25, 30 or 40 (respectively) even though the dice do not meet the normal requirement for those categories. In this case the Yahtzee is said to act as a "Joker".
       </p>
 
     </div>
