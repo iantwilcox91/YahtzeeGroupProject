@@ -4,7 +4,7 @@
   width: 80px;
 }
 .table {
-  width: 40%;
+  width: 65%;
 }
 .listOfRules{
   display: none;
@@ -21,4 +21,7 @@ tr {
 }
 .p2{
   display: none;
+}
+.jumbotron{
+  text-align: center;
 }
