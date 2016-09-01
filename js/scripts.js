@@ -180,32 +180,26 @@ function checkThreeKind (aRollArray) {
 //Tests for smass straight
 function checkSmallStraight (aRollArray) {
   var recommendation ="";
-  var ones = 0
-  var twos = 0
-  var threes = 0
-  var fours = 0
-  var fives = 0
-  var sixs = 0
+  var ones = 0; var twos = 0; var threes = 0; var fours = 0; var fives = 0; var sixs = 0;
 
-  numbersOneThroughSix.forEach(function(num){
-    if (num === 1){ ones++ }
-    if (num === 2){ twos++ }
-    if (num === 3){ threes++ }
-    if (num === 4){ fours++ }
-    if (num === 5){ fives++ }
-    if (num === 6){ sixs++ }
+  aRollArray.forEach(function(num){
+    if (num === 1){ ones++ ;} if (num === 2){ twos++ ;} if (num === 3){ threes++ ;} if (num === 4){ fours++ ;} if (num === 5){ fives++ ;} if (num === 6){ sixs++ ;}
   });
+    console.log("ones= " + ones);
+    console.log("twos= " + twos);
+    console.log("threes= " + threes);
+    console.log("fours= " + fours);
+    console.log("fives= " + fives);
+    console.log("sixs= " + sixs);
 
-  if ( threes>1 && fours>1 ){
-    if( twos>1){
-      if (ones>1){
+  if ( threes>=1 && fours>=1 ){
+    if( twos>=1){
+      if (ones>=1){
       recommendation = 'straight';
-      alert("straight")
       return (recommendation);}
-    }else if( fives>1) {
-      if (twos>1 || sixs>1){
+    }else if( fives>=1) {
+      if (twos>=1 || sixs>=1){
       recommendation = 'straight';
-      alert("straight")
       return (recommendation);}
     }
   }
