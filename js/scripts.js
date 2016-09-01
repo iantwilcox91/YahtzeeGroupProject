@@ -186,10 +186,12 @@ function checkSmallStraight (aRollArray) {
     if( twos>1){
       if (ones>1){
       recommendation = 'straight';
+      alert("straight")
       return (recommendation);}
     }else if( fives>1) {
       if (twos>1 || sixs>1){
       recommendation = 'straight';
+      alert("straight")
       return (recommendation);}
     }
   }
