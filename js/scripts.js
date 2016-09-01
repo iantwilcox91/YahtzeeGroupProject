@@ -96,12 +96,6 @@ GrandTotalScore.prototype.endGameTotals = function(){
   });
 }
 
-
-
-
-
-
-
 //Object Instances for new page load
 var aBoard = new Board();
 var aGrandTotalScore = new GrandTotalScore();
@@ -185,13 +179,6 @@ function checkSmallStraight (aRollArray) {
   aRollArray.forEach(function(num){
     if (num === 1){ ones++ ;} if (num === 2){ twos++ ;} if (num === 3){ threes++ ;} if (num === 4){ fours++ ;} if (num === 5){ fives++ ;} if (num === 6){ sixs++ ;}
   });
-    console.log("ones= " + ones);
-    console.log("twos= " + twos);
-    console.log("threes= " + threes);
-    console.log("fours= " + fours);
-    console.log("fives= " + fives);
-    console.log("sixs= " + sixs);
-
   if ( threes>=1 && fours>=1 ){
     if( twos>=1){
       if (ones>=1){
@@ -205,15 +192,6 @@ function checkSmallStraight (aRollArray) {
   }
 }
 
-
-
-
-
-
-
-
-
-
 //This function runs all other number checking functions,  JB 8.31.16
 //Right now the order of the functions in this array recommends the best move. Careful changing order!!!!
 Dice.prototype.makeARecommendation = function() {
@@ -226,7 +204,6 @@ Dice.prototype.makeARecommendation = function() {
   var check0 = checkYatzee(aRollArray); if (check0) {recommendation = checkYatzee(aRollArray);}
   checkCondition (recommendation);
 }
-
 
 //Will check conditions and return a "recommed" string.  JB  8.30.16
 function checkCondition (recommendation) {
@@ -254,11 +231,6 @@ function checkCondition (recommendation) {
 }
 
 // -- End of jonathan edits section
-
-
-
-
-
 
 function diceRoll(){
   var rollResult = Math.floor((Math.random() * 6) + 1);
