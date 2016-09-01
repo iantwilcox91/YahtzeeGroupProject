@@ -147,7 +147,7 @@ function checkFourKind (aRollArray) {
     aRollArray.forEach(function(roll) {
       if (num === roll) {amount++; }
     });
-    if (amount === 4) {
+    if (amount >= 4) {
       jbAKind = num;
       recommendation = 'fourKind';
     }
@@ -163,7 +163,7 @@ function checkThreeKind (aRollArray) {
     aRollArray.forEach(function(roll) {
       if (num === roll) {amount++; }
     });
-    if (amount === 3) {
+    if (amount >= 3) {
       jbAKind = num;
       recommendation = 'threeKind';
     }
@@ -212,6 +212,9 @@ Dice.prototype.makeARecommendation = function() {
   var check0 = checkYatzee(aRollArray); if (check0) {recommendation = checkYatzee(aRollArray);}
   checkCondition (recommendation);
 }
+
+//This will highlight boxes
+
 
 //Will check conditions and return a "recommed" string.  JB  8.30.16
 function checkCondition (recommendation) {
