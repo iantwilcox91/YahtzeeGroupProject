@@ -283,18 +283,18 @@ Dice.prototype.makeARecommendation = function() {
   var check0 = checkYatzee(aRollArray); if (check0) {recommendation = checkYatzee(aRollArray);}
   checkCondition (recommendation);
   //This will highlight boxes
-  if (check2 && aBoard.ones === -1 && amountOfANumber > 2 && jbAKind === 1 ) {$("#ones").closest("tr").addClass("highlightId")}
-  if (check2 && aBoard.twoes === -1 && amountOfANumber > 2 && jbAKind === 2 ) {$("#twoes").closest("tr").addClass("highlightId")}
-  if (check2 && aBoard.threes === -1 && amountOfANumber > 2 && jbAKind === 3) {$("#threes").closest("tr").addClass("highlightId")}
-  if (check2 && aBoard.fours === -1 && amountOfANumber > 2 && jbAKind === 4) {$("#fours").closest("tr").addClass("highlightId")}
-  if (check2 && aBoard.fives === -1 && amountOfANumber > 2 && jbAKind === 5) {$("#fives").closest("tr").addClass("highlightId")}
-  if (check2 && aBoard.sixes === -1 && amountOfANumber > 2 && jbAKind === 6) {$("#sixes").closest("tr").addClass("highlightId")}
-  if (check2 && aBoard.threeKind === -1) {$("#threeKind").closest("tr").addClass("highlightId")}
-  if (check1 && aBoard.fourKind === -1) {$("#fourKind").closest("tr").addClass("highlightId")}
-  if (check4 && aBoard.fullHouse === -1) {$("#fullHouse").closest("tr").addClass("highlightId")}
-  if (check3 && aBoard.smStraight === -1) {$("#smStraight").closest("tr").addClass("highlightId")}
-  if (check5 && aBoard.lgStraight === -1) {$("#lgStraight").closest("tr").addClass("highlightId")}
-  if (check0 && aBoard.yahtzee === -1) {$("#yahtzee").closest("tr").addClass("highlightId")}
+  if (check2 && aBoard.ones === -1 && amountOfANumber > 2 && jbAKind === 1 ) {$("#ones").addClass("highlightId"); $("#onesP2").addClass("highlightId")}
+  if (check2 && aBoard.twoes === -1 && amountOfANumber > 2 && jbAKind === 2 ) {$("#twoes").addClass("highlightId"); $("#twoesP2").addClass("highlightId")}
+  if (check2 && aBoard.threes === -1 && amountOfANumber > 2 && jbAKind === 3) {$("#threes").addClass("highlightId"); $("#threesP2").addClass("highlightId")}
+  if (check2 && aBoard.fours === -1 && amountOfANumber > 2 && jbAKind === 4) {$("#fours").addClass("highlightId"); $("#foursP2").addClass("highlightId")}
+  if (check2 && aBoard.fives === -1 && amountOfANumber > 2 && jbAKind === 5) {$("#fives").addClass("highlightId"); $("#fivesP2").addClass("highlightId")}
+  if (check2 && aBoard.sixes === -1 && amountOfANumber > 2 && jbAKind === 6) {$("#sixes").addClass("highlightId"); $("#sixesP2").addClass("highlightId")}
+  if (check2 && aBoard.threeKind === -1) {$("#threeKind").addClass("highlightId"); $("#threeKindP2").addClass("highlightId")}
+  if (check1 && aBoard.fourKind === -1) {$("#fourKind").addClass("highlightId"); $("#fourKindP2").addClass("highlightId")}
+  if (check4 && aBoard.fullHouse === -1) {$("#fullHouse").addClass("highlightId"); $("#fullHouseP2").addClass("highlightId")}
+  if (check3 && aBoard.smStraight === -1) {$("#smStraight").addClass("highlightId"); $("#smStraightP2").addClass("highlightId")}
+  if (check5 && aBoard.lgStraight === -1) {$("#lgStraight").addClass("highlightId"); $("#lgStraightP2").addClass("highlightId")}
+  if (check0 && aBoard.yahtzee === -1) {$("#yahtzee").addClass("highlightId"); $("#yahtzeeP2").addClass("highlightId")}
 }
 
 function removeCss() {
