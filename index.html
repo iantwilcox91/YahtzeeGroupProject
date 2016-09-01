@@ -10,6 +10,7 @@
     <meta charset="utf-8">
     <title>Yahtzee</title>
   </head>
+  <body>
   <nav class="navbar navbar-inverse">
   <div class="container-fluid">
     <div class="navbar-header">
@@ -24,7 +25,6 @@
   <div class="jumbotron">
     <img src="http://www.slotswire.com/public/articles/20149171177-wms-gaming-slot-yahtzee-banner.png" alt="banner" />
   </div>
-  <body>
     <div class="row">
       <div class="col-md-1">
       </div>
@@ -38,11 +38,10 @@
           <input type="checkbox" name="dice" class="die5" value="5"><img class="diceImg dieimg5" src="dice/dice5.png" alt="dice5"/>
         </form>
         <button type="button" class="btn btn-success btn-lg" id="rollButton" >ROLL</button>
-        <div class="notesForTurn"></div>
+
+        <div class="bg-success notesForTurn"></div>
+
         <div class="bg-primary">Good Luck!</div>
-
-
-
       </div>
       <div class="col-md-8" id="scoreSide">
         <div class="container">
@@ -242,10 +241,9 @@
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
           </div>
           </div>
+        </div>
       </div>
     </div>
-    </div>
   </div>
-</div>
 </body>
 </html>

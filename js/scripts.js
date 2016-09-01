@@ -56,9 +56,11 @@ function GrandTotalScore () {
 
 //needed function boardInputToObject.  It is all the form ids.  JB and Note 8/31/16
 var allFormIds = ["ones", "twoes", "threes", "fours", "fives", "sixes", "bonus", "threeKind", "fourKind", "fullHouse", "smStraight", "lgStraight", "yahtzee", "chance", "yahtzeeBonus", "onesP2", "twoesP2", "threesP2", "foursP2", "fivesP2", "sixesP2", "bonusP2", "threeKindP2", "fourKindP2", "fullHouseP2", "smStraightP2", "lgStraightP2", "yahtzeeP2", "chanceP2", "yahtzeeBonusP2"];
+
 var allCalculatedIds = ["total", "bonus", "upperTotal", "lowerTotal", "grandTotal", "totalP2", "bonusP2", "upperTotalP2", "lowerTotalP2", "grandTotalP2"];
 var numbersOneThroughSix = [1,2,3,4,5,6]; //This is needed for several recommendation functions
-var jbAKind //this makes it easy to put a number in switch statments
+var jbAKind = 0;//this makes it easy to put a number in switch statments
+var amountOfANumber = 0;
 
 //Function goes throug the form and checks for updated values.  JB and Note 8/31/16
 //This function could be rewritten and shorter if all form ids had key value pairs.  This would allow for a loop of if statements.
@@ -206,7 +208,7 @@ function checkFourKind (aRollArray) {
     aRollArray.forEach(function(roll) {
       if (num === roll) {amount++; }
     });
-    if (amount === 4) {
+    if (amount >= 4) {
       jbAKind = num;
       recommendation = 'fourKind';
     }
@@ -222,7 +224,8 @@ function checkThreeKind (aRollArray) {
     aRollArray.forEach(function(roll) {
       if (num === roll) {amount++; }
     });
-    if (amount === 3) {
+    if (amount >= 3) {
+      amountOfANumber = amount;
       jbAKind = num;
       recommendation = 'threeKind';
     }
@@ -280,7 +283,27 @@ Dice.prototype.makeARecommendation = function() {
   var check1 = checkFourKind(aRollArray); if (check1) {recommendation = checkFourKind(aRollArray);}
   var check0 = checkYatzee(aRollArray); if (check0) {recommendation = checkYatzee(aRollArray);}
   checkCondition (recommendation);
+  //This will highlight boxes
+  if (check2 && aBoard.ones === -1 && amountOfANumber > 2 && jbAKind === 1 ) {$("#ones").addClass("highlightId"); $("#onesP2").addClass("highlightId")}
+  if (check2 && aBoard.twoes === -1 && amountOfANumber > 2 && jbAKind === 2 ) {$("#twoes").addClass("highlightId"); $("#twoesP2").addClass("highlightId")}
+  if (check2 && aBoard.threes === -1 && amountOfANumber > 2 && jbAKind === 3) {$("#threes").addClass("highlightId"); $("#threesP2").addClass("highlightId")}
+  if (check2 && aBoard.fours === -1 && amountOfANumber > 2 && jbAKind === 4) {$("#fours").addClass("highlightId"); $("#foursP2").addClass("highlightId")}
+  if (check2 && aBoard.fives === -1 && amountOfANumber > 2 && jbAKind === 5) {$("#fives").addClass("highlightId"); $("#fivesP2").addClass("highlightId")}
+  if (check2 && aBoard.sixes === -1 && amountOfANumber > 2 && jbAKind === 6) {$("#sixes").addClass("highlightId"); $("#sixesP2").addClass("highlightId")}
+  if (check2 && aBoard.threeKind === -1) {$("#threeKind").addClass("highlightId"); $("#threeKindP2").addClass("highlightId")}
+  if (check1 && aBoard.fourKind === -1) {$("#fourKind").addClass("highlightId"); $("#fourKindP2").addClass("highlightId")}
+  if (check4 && aBoard.fullHouse === -1) {$("#fullHouse").addClass("highlightId"); $("#fullHouseP2").addClass("highlightId")}
+  if (check3 && aBoard.smStraight === -1) {$("#smStraight").addClass("highlightId"); $("#smStraightP2").addClass("highlightId")}
+  if (check5 && aBoard.lgStraight === -1) {$("#lgStraight").addClass("highlightId"); $("#lgStraightP2").addClass("highlightId")}
+  if (check0 && aBoard.yahtzee === -1) {$("#yahtzee").addClass("highlightId"); $("#yahtzeeP2").addClass("highlightId")}
 }
+
+function removeCss() {
+   allFormIds.forEach(function(id){
+     $("#" + id).removeClass("highlightId");
+   });
+ }
+
 
 //Will check conditions and return a "recommed" string.  JB  8.30.16
 function checkCondition (recommendation) {
@@ -373,6 +396,8 @@ $(document).ready(function(){
     timesRolledThisTurn = timesRolledThisTurn + 1
     $(".notesForTurn").text("you have clicked roll "+timesRolledThisTurn+" time(s).");
     rollForTurn();
+      // this will delete highlight input boxes
+    removeCss();
     aRoll.makeARecommendation();
   });
 
@@ -395,6 +420,7 @@ $(document).ready(function(){
   });
 
   $("#AddPlayer").click(function() {
+
   $(".p2").show();
   $("#AddPlayer").hide();
 
@@ -404,6 +430,8 @@ $(document).ready(function(){
   $("#aboutModal").modal(toggle)
     $(".modal-about-body").show();
 
-});
+  });
 
-});
+    $(".p2").show();
+    $("#AddPlayer").hide();
+  });
