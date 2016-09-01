@@ -4,7 +4,7 @@
   width: 80px;
 }
 .table {
-  width: 40%;
+  width: 65%;
 }
 .listOfRules{
   display: none;
@@ -19,7 +19,12 @@ tr {
   margin-top: 60px;
   padding: 20px 25px 20px 25px;
 }
-
 .highlightId {
   background-color: yellow;
+}
+.p2{
+  display: none;
+}
+.jumbotron{
+  text-align: center;
 }
