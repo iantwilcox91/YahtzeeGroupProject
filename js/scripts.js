@@ -131,6 +131,20 @@ function checkYatzee(aRollArray) {
   if (i===5) {recommendation = 'yahtzee'; return recommendation;}
 }
 
+//Tests for fullHouse
+function checkFullHouse (aRollArray) {
+  var recommendation ="";
+  var ones = 0; var twoes = 0; var threes = 0; var fours = 0; var fives = 0; var sixes = 0;
+  aRollArray.forEach(function(num){
+      if (num === 1) {ones++;} if (num === 2) {twoes++;} if (num === 3) {threes++;} if (num === 4) {fours++;} if (num === 5) {fives++;} if (num === 6) {sixes++;}
+  });
+  if (ones === 3 || twoes === 3 || threes === 3 || fours === 3 || fives === 3 || sixes === 3) {
+    if (ones === 2 || twoes === 2 || threes === 2 || fours === 2 || fives === 2 || sixes === 2 ){
+      return "fullHouse";
+    }
+  }
+}
+
 //Tests for four of a kind
 function checkFourKind (aRollArray) {
   var recommendation ="";
@@ -207,12 +221,13 @@ function checkSmallStraight (aRollArray) {
 
 
 //This function runs all other number checking functions,  JB 8.31.16
-//Right now the order of the functions in this array recommends the best move.
+//Right now the order of the functions in this array recommends the best move. Careful changing order!!!!
 Dice.prototype.makeARecommendation = function() {
   var recommendation = "Good Luck!";
   aRollArray = turningaRolltoArray(this);
   var check3 = checkSmallStraight (aRollArray); if (check3) {recommendation = checkSmallStraight (aRollArray); }
   var check2 = checkThreeKind (aRollArray); if (check2) {recommendation = checkThreeKind (aRollArray); }
+  var check4 = checkFullHouse (aRollArray); if (check4) {recommendation = checkFullHouse (aRollArray); }
   var check1 = checkFourKind(aRollArray); if (check1) {recommendation = checkFourKind(aRollArray);}
   var check0 = checkYatzee(aRollArray); if (check0) {recommendation = checkYatzee(aRollArray);}
   checkCondition (recommendation);
@@ -229,6 +244,9 @@ function checkCondition (recommendation) {
     case 'fourKind':
         resultRecommendation = "You have four "+jbAKind+"s!";
         break;
+    case 'fullHouse':
+        resultRecommendation = "You have a Full House";
+        break;
     case 'threeKind':
         resultRecommendation = "You have three "+jbAKind+"s!";
         break;
@@ -236,7 +254,7 @@ function checkCondition (recommendation) {
         resultRecommendation = "You have a straight!";
         break;
     default:
-      resultRecommendation = "No recommendations...";
+      resultRecommendation = "You could chance it...";
   }
   $(".bg-primary").text(resultRecommendation);
 }
