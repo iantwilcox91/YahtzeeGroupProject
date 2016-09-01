@@ -422,16 +422,14 @@ $(document).ready(function(){
   $("#AddPlayer").click(function() {
 
   $(".p2").show();
-  $("#AddPlayer").hide();
-
-  $("#rulesModal").modal(toggle)
-    $(".modal-body").show();
-
-  $("#aboutModal").modal(toggle)
-    $(".modal-about-body").show();
+  $("#AddPlayer").show();
 
   });
+  $("#rulesModal").modal('toggle')
+    $(".modal-body").show();
 
-    $(".p2").show();
-    $("#AddPlayer").hide();
+  $("#aboutModal").modal('toggle')
+    $(".modal-about-body").show();
+
+
   });
