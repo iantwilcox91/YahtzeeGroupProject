@@ -422,7 +422,7 @@ $(document).ready(function(){
   $("#AddPlayer").click(function() {
 
   $(".p2").show();
-  $("#AddPlayer").show();
+  $("#AddPlayer").hide();
 
   });
   $("#rulesModal").modal('toggle')
