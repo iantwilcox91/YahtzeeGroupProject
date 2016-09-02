@@ -55,7 +55,8 @@ function GrandTotalScore () {
 //Board methods
 
 //needed function boardInputToObject.  It is all the form ids.  JB and Note 8/31/16
-var allFormIds = [ "ones", "twoes", "threes", "fours", "fives", "sixes", "bonus", "threeKind", "fourKind", "fullHouse", "smStraight", "lgStraight", "yahtzee", "chance", "yahtzeeBonus", "onesP2", "twoesP2", "threesP2", "foursP2", "fivesP2", "sixesP2", "bonusP2", "threeKindP2", "fourKindP2", "fullHouseP2", "smStraightP2", "lgStraightP2", "yahtzeeP2", "chanceP2", "yahtzeeBonusP2"];
+var allFormIds = ["ones", "twoes", "threes", "fours", "fives", "sixes", "bonus", "threeKind", "fourKind", "fullHouse", "smStraight", "lgStraight", "yahtzee", "chance", "yahtzeeBonus", "onesP2", "twoesP2", "threesP2", "foursP2", "fivesP2", "sixesP2", "bonusP2", "threeKindP2", "fourKindP2", "fullHouseP2", "smStraightP2", "lgStraightP2", "yahtzeeP2", "chanceP2", "yahtzeeBonusP2"];
+
 var allCalculatedIds = ["total", "bonus", "upperTotal", "lowerTotal", "grandTotal", "totalP2", "bonusP2", "upperTotalP2", "lowerTotalP2", "grandTotalP2"];
 var numbersOneThroughSix = [1,2,3,4,5,6]; //This is needed for several recommendation functions
 var jbAKind = 0;//this makes it easy to put a number in switch statments
@@ -419,8 +420,16 @@ $(document).ready(function(){
   });
 
   $("#AddPlayer").click(function() {
-    $(".p2").show();
-    $("#AddPlayer").hide();
-  });
 
-});
+  $(".p2").show();
+  $("#AddPlayer").hide();
+
+  });
+  $("#rulesModal").modal('toggle')
+    $(".modal-body").show();
+
+  $("#aboutModal").modal('toggle')
+    $(".modal-about-body").show();
+
+
+  });
