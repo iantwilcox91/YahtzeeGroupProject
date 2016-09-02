@@ -36,25 +36,3 @@ tr {
   text-align: center;
   color: blue;
 }
-.p2{
-  display: none;
-}
-.navbar {
-  margin: 0px;
-}
-.jumbotron{
-  text-align: center;
-  padding: 0px;
-  margin: 0px;
-}
-.jumbotron img {
-  height: 10%;
-  width:100%;
-}
-.modal-body {
-  background-color: #cfdacf;
-}
-.modal-about-body {
-
-  background-color: #f2d0cc;
-}
